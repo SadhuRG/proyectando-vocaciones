@@ -54,6 +54,7 @@ const Header = () => {
           <a href="#publico" onClick={() => setIsMobileMenuOpen(false)}>Público Objetivo</a>
           <a href="/carreras" onClick={() => setIsMobileMenuOpen(false)}>Carreras</a>
           <a href="/organizadores" onClick={() => setIsMobileMenuOpen(false)}>Organizadores</a>
+          <a href="/ediciones" onClick={() => setIsMobileMenuOpen(false)}>Ediciones</a>
           <a href="/galeria" onClick={() => setIsMobileMenuOpen(false)}>Galería</a>
         </nav>
 
