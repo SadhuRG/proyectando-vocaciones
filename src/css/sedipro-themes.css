@@ -1,0 +1,204 @@
+/* ==========================================================================
+   1. SEDIPRO-BASE (El ADN del sistema)
+   ========================================================================== */
+    :root {
+        /* Tipografía */
+        --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        --font-inter: "Inter", sans-serif;
+        
+        /* Zinc Palette */
+        --color-zinc-50: #fafafa;
+        --color-zinc-100: #f5f5f5;
+        --color-zinc-200: #e5e5e5;
+        --color-zinc-300: #d4d4d4;
+        --color-zinc-400: #a3a3a3;
+        --color-zinc-500: #737373;
+        --color-zinc-600: #525252;
+        --color-zinc-700: #404040;
+        --color-zinc-800: #262626;
+        --color-zinc-900: #171717;
+        --color-zinc-950: #0a0a0a;
+        /* Colores de Sediprano */
+        --color-azul-oscuro: #292d66;
+        --color-azul: #3154a2;
+        --color-morado: #672577;
+
+        /* Primary Colors */
+        --color-primary-25: #f7faff;
+        --color-primary-50: #ebf1fd;
+        --color-primary-100: #b4c3e7;
+        --color-primary-200: #6987cf;
+        --color-primary-300: #3454a1;
+        --color-primary-400: #29427e;
+        --color-primary-500: #1d2f5a;
+        --color-primary-alpha-10: rgba(52, 84, 161, 0.1);
+
+        /* Secondary Colors */
+        --color-secondary-100: #979ad4;
+        --color-secondary-200: #6368bf;
+        --color-secondary-300: #3f449a;
+        --color-secondary-400: #2a2d66;
+        --color-secondary-500: #191a3c;
+        --color-secondary-alpha-10: rgba(58, 40, 149, 0.1);
+        --color-secondary-alpha-5: rgba(58, 40, 149, 0.05);
+
+        /* Neutral Colors */
+        --color-neutral-0: #ffffff;
+        --color-neutral-100: #ebebed;
+        --color-neutral-200: #d8d8d8;
+        --color-neutral-300: #c4c4c4;
+        --color-neutral-400: #afabaf;
+        --color-neutral-500: #9a9a9a;
+        --color-neutral-600: #808686;
+        --color-neutral-700: #717171;
+        --color-neutral-800: #5c5c5c;
+        --color-neutral-850: #484848;
+        --color-neutral-900: #333333;
+
+        /* Accent Colors */
+        --color-accent-50: #e7c9ee;
+        --color-accent-100: #cf93dd;
+        --color-accent-200: #b75dcd;
+        --color-accent-300: #9636ad;
+        --color-accent-400: #6c2d91;
+        --color-accent-500: #672577;
+        --color-accent-600: #3c1645;
+
+        /* Semantic / Theme Colors */
+        --color-accent: var(--color-neutral-800);
+        --color-accent-content: var(--color-neutral-800);
+        --color-accent-foreground: #ffffff; /* Asumido blanco */
+
+        /* Feedback Colors */
+        --color-red-100: #dc3545;
+        --color-red-200: #a21c29;
+        --color-yellow-100: #ffc107;
+        --color-yellow-200: #b78900;
+        --color-green-100: #85e29a;
+        --color-green-200: #28A745;
+        --color-green-300: #28A745;
+        --color-light-blue-50: #e6f4ff;
+        --color-light-blue-100: #b0deff;
+        --color-light-blue-200: #8aceff;
+        --color-light-blue-300: #54b8ff;
+        --color-light-blue-400: #33aaff;
+        --color-light-blue-500: #0095ff;
+        --color-success: #43b75d;
+
+        /* Font Sizes */
+        --font-size-h1: 32px;
+        --font-size-h2: 28px;
+        --font-size-h3: 24px;
+        --font-size-h4: 20px;
+        --font-size-h5: 18px;
+        --font-size-h6: 16px;
+        --font-size-large: 18px;
+        --font-size-medium: 16px;
+        --font-size-small: 14px;
+        --font-size-extra-small: 12px;
+
+        /* Margins */
+        --margin-top-h1: 70px;
+        --margin-bottom-h1: 50px;
+        --margin-top-h2: 50px;
+        --margin-bottom-h2: 40px;
+        --margin-top-default: 20px;
+        --margin-bottom-default: 20px;
+
+        /* Text Shortcuts (Font-family + Size/Line-height) */
+        --h1-Heading-32px-Bold: 700 32px/40px var(--font-inter);
+        --h2-Title-28px-Bold: 700 28px/36px var(--font-inter);
+        --h3-Subtitle-24px-Semibold: 600 24px/32px var(--font-inter);
+        --h4-Subtitle-20px-Medium: 500 20px/28px var(--font-inter);
+        --h5-Subtitle-18px-Regular: 400 18px/26px var(--font-inter);
+        --h6-Subtitle-16px-Regular: 400 16px/24px var(--font-inter);
+        --Normaltext-14px-Regular: 400 14px/22px var(--font-inter);
+        --Littletext-12px-Light: 300 12px/20px var(--font-inter);
+        --Normaltext-16px-Regular: 400 16px/24px var(--font-inter);
+        --Normaltext-18px-Medium: 500 18px/26px var(--font-inter);
+        --Normaltext-18px-Semibold: 600 18px/28px var(--font-inter);
+        --Normaltext-14px-Semibold: 600 14px/22px var(--font-inter);
+        --Normaltext-16px-Semibold: 600 16px/24px var(--font-inter);
+        --Normaltext-14px-Medium: 500 14px/22px var(--font-inter);
+    }
+
+/* ==========================================================================
+   2. EDICIONES (Sobrescritura específica)
+   ========================================================================== */
+
+    /* Primera edición: Mantiene la esencia pero define sus propios acentos */
+    [data-edition="1.0"] {
+        --color-primary-300: #3154a2;
+        --color-yellow-100: #ffc107;
+        --fs-h1: 3.5rem;
+    }
+
+    /* Segunda edición: Cambio de paleta a morados intensos */
+    [data-edition="2.0"] {
+        --color-primary-300: #6a1b9a;
+        --color-yellow-100: #ffeb3b;
+        --fs-h1: 4rem;
+    }
+
+    /* Tercera edición */
+    [data-edition="3.0"] {
+        --color-primary-300: #1a237e; /* Un azul más profundo por ejemplo */
+        --fs-h1: 4.5rem;
+    }
+
+/* ==========================================================================
+   3. MODOS DE COLOR (Dark Mode)
+   ========================================================================== */
+    .dark {
+        --color-accent: #ffffff;
+        --color-accent-foreground: var(--color-neutral-800);
+        /* Aquí puedes añadir cambios globales para dark mode */
+    }
+
+/* ==========================================================================
+   4. ESTILOS BASE Y COMPONENTES (Usan las variables de arriba)
+   ========================================================================== */
+    /* 3. Base Styles */
+    *, ::after, ::before, ::backdrop {
+        box-sizing: border-box;
+        border-color: var(--color-zinc-200, currentColor);
+    }
+
+    body {
+        font-family: var(--font-sans);
+    }
+
+    /* 4. Utility Classes (Reemplazo de @layer utilities) */
+    .h1-Heading-32px-Bold { font: var(--h1-Heading-32px-Bold); }
+    .h2-Title-28px-Bold { font: var(--h2-Title-28px-Bold); }
+    .h3-Subtitle-24px-Semibold { font: var(--h3-Subtitle-24px-Semibold); }
+    .h4-Subtitle-20px-Medium { font: var(--h4-Subtitle-20px-Medium); }
+    .h5-Subtitle-18px-Regular { font: var(--h5-Subtitle-18px-Regular); }
+    .h6-Subtitle-16px-Regular { font: var(--h6-Subtitle-16px-Regular); }
+
+    .Normaltext-14px-Regular { font: var(--Normaltext-14px-Regular); }
+    .Littletext-12px-Light { font: var(--Littletext-12px-Light); }
+    .Normaltext-16px-Regular { font: var(--Normaltext-16px-Regular); }
+    .Normaltext-18px-Medium { font: var(--Normaltext-18px-Medium); }
+    .Normaltext-18px-Semibold { font: var(--Normaltext-18px-Semibold); }
+    .Normaltext-14px-Semibold { font: var(--Normaltext-14px-Semibold); }
+    .Normaltext-16px-Semibold { font: var(--Normaltext-16px-Semibold); }
+    .Normaltext-14px-Medium { font: var(--Normaltext-14px-Medium); }
+
+    /* 5. Flux Components*/
+    [data-flux-field] {
+        display: grid;
+        gap: 0.5rem; /* gap-2 */
+    }
+
+    [data-flux-label] {
+        margin-bottom: 0 !important;
+        line-height: 1.25; /* leading-tight */
+    }
+
+    input:focus[data-flux-control],
+    textarea:focus[data-flux-control],
+    select:focus[data-flux-control] {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--color-accent-foreground), 0 0 0 4px var(--color-accent);
+    }

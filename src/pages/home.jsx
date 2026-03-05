@@ -1,8 +1,8 @@
 import { useScroll } from '../hooks/use_scroll';
 import ScrollArrow from '../components/scroll_arrow';
 import { scrollToSection } from '../lib/utils';
-import '../css/home.css';
-import '../css/quienes-somos.css';
+import '../css/welcome-home/home.css';
+import '../css/quienes-somos/quienes-somos.css';
 const Home = () => {
   const { showArrow } = useScroll();
 
