@@ -1,11 +1,12 @@
-export const organizadoresData = [
+// Datos de organizadores para Proyectando Vocaciones 3.0
+export const organizadoresDataPV3 = [
     {
         area: "Dirección de Proyecto",
         description: "Liderazgo y visión estratégica de Proyectando Vocaciones 3.0",
         members: [
             {
                 id: 1,
-                name: "Cielo Abanto 1",
+                name: "Cielo Abanto 3",
                 role: "Directora General",
                 image: "organizadores/directora.jpg",
                 isLeader: true
