@@ -52,21 +52,21 @@ const Header = () => {
           <a href="#objetivos" onClick={() => setIsMobileMenuOpen(false)}>Objetivos</a>
           <a href="#evento" onClick={() => setIsMobileMenuOpen(false)}>Sobre el Evento</a>
           <a href="#publico" onClick={() => setIsMobileMenuOpen(false)}>Público Objetivo</a>
-          <a href="/carreras" onClick={() => setIsMobileMenuOpen(false)}>Carreras</a>
-          <a href="/organizadores" onClick={() => setIsMobileMenuOpen(false)}>Organizadores</a>
+          {/* <a href="/carreras" onClick={() => setIsMobileMenuOpen(false)}>Carreras</a> */}
+          {/* <a href="/organizadores" onClick={() => setIsMobileMenuOpen(false)}>Organizadores</a> */}
           <a href="/ediciones" onClick={() => setIsMobileMenuOpen(false)}>Ediciones</a>
           <a href="/galeria" onClick={() => setIsMobileMenuOpen(false)}>Galería</a>
         </nav>
 
         <div className="flex items-center gap-4">
-          <select onChange={handleEditionChange} className="edition-select">
+          {/* <select onChange={handleEditionChange} className="edition-select">
             <option value="">Ediciones</option>
             {editions.map(ed => (
               <option key={ed.value} value={ed.value}>
                 {ed.label}
               </option>
             ))}
-          </select>
+          </select> */}
 
           <FaBars className="hamburger" onClick={toggleMobileMenu} />
         </div>

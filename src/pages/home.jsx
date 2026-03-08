@@ -11,7 +11,7 @@ const Home = () => {
       {/* Sección Landing */}
       <section id="home" className="home-section bg-purple-800">
         <div className='home-content'> 
-          <h1>Proyectando <span className='highlight'>Vocaciones 3.0</span></h1>
+          <h1>Proyectando <span className='highlight'>Vocaciones</span></h1>
           <p className='subtitle'>¡Un paso firme hacia tu futuro profesional!</p>
           <div className='home-buttons'>
             <a className='btn btn-primary'>Más Información</a>

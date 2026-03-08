@@ -59,7 +59,7 @@ header {
   text-decoration: none;
   color: #655C8A; /* Texto blanco limpio como la imagen */
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   transition: opacity 0.2s;
   white-space: nowrap;
 }

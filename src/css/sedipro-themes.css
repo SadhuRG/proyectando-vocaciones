@@ -126,24 +126,90 @@
    2. EDICIONES (Sobrescritura específica)
    ========================================================================== */
 
-    /* Primera edición: Mantiene la esencia pero define sus propios acentos */
+/* ==========================================================================
+   2. EDICIONES (Sobrescritura visual específica)
+   ========================================================================== */
+
+    /* Proyectando Vocaciones 1.0 (Azules y Naranjas) */
     [data-edition="1.0"] {
-        --color-primary-300: #3154a2;
-        --color-yellow-100: #ffc107;
-        --fs-h1: 3.5rem;
+        /* Primary (Azules extraídos de la imagen 3) */
+        --color-primary-100: #e7eff8;
+        --color-primary-200: #adc5e2;
+        --color-primary-300: #6085b7;
+        --color-primary-400: #355a86;
+        --color-primary-500: #1b385e;
+
+        /* Secondary(Naranjas cálidos) */
+        --color-secondary-100: #fde2cf;
+        --color-secondary-200: #fbc193;
+        --color-secondary-300: #f7964c;
+        --color-secondary-400: #ef6d13;
+        --color-secondary-500: #c2550b;
+        --color-secondary-600: #984107;
+        --color-secondary-700: #f67515;
+        --color-secondary-800: #ee5212;
+
+        /* Accent (Naranjas/Cobrizos) */
+        --color-accent-50:  #fef0e6;
+        --color-accent-100: #fdd8bd;
+        --color-accent-200: #fbb382;
+        --color-accent-300: #f68b46;
+        --color-accent-400: #e45d16;
+        --color-accent-500: #b43f0c;
+        --color-accent-600: #8c2e08;
     }
 
-    /* Segunda edición: Cambio de paleta a morados intensos */
+    /* Proyectando Vocaciones 2.0 (Azul a Verde azulado y Dorados) */
     [data-edition="2.0"] {
-        --color-primary-300: #6a1b9a;
-        --color-yellow-100: #ffeb3b;
-        --fs-h1: 4rem;
+        /* Primary (Escala múltiple extraída de la imagen 2) */
+        --color-primary-100: #094a86;
+        --color-primary-200: #0d6db5;
+        --color-primary-300: #1593c6;
+        --color-primary-400: #439b99;
+        --color-primary-500: #b2a945;
+        --color-primary-550: #f4c815;
+
+        /* Secondary (Tonos azules suaves) */
+        --color-secondary-100: #cae1f5;
+        --color-secondary-200: #93bdee;
+        --color-secondary-300: #5790ce;
+        --color-secondary-400: #2e66a8;
+        --color-secondary-500: #1b487d;
+        --color-secondary-600: #0f274d;
+
+        /* Accent (Dorados/Mostaza) */
+        --color-accent-50:  #fef8e1;
+        --color-accent-100: #fde8b0;
+        --color-accent-200: #f8ce72;
+        --color-accent-300: #f0ab2b;
+        --color-accent-400: #cf8415;
+        --color-accent-500: #a15f0d;
+        --color-accent-600: #7d4608;
     }
 
-    /* Tercera edición */
+    /* Proyectando Vocaciones 3.0 (Morados y Naranjas/Amarillos) */
     [data-edition="3.0"] {
-        --color-primary-300: #1a237e; /* Un azul más profundo por ejemplo */
-        --fs-h1: 4.5rem;
+        /* Primary (Tonos morados vibrantes extraídos de la imagen 1) */
+        --color-primary-100: #ebd4f4;
+        --color-primary-200: #d5a5eb;
+        --color-primary-300: #c175e2;
+        --color-primary-400: #ae45d9;
+        --color-primary-500: #9c15d0;
+        --color-primary-550: #603db1;
+        --color-primary-580: #36328a;
+        --color-primary-600: #451b54;
+        --color-primary-650: #30113c;
+        --color-primary-700: #1d0825;
+
+        /* Secondary (Escala cálida: de amarillo a salmón) */
+        --color-secondary-100: #fdf1c5;
+        --color-secondary-200: #fce177;
+        --color-secondary-300: #facf2b;
+        --color-secondary-400: #f2a60b;
+        --color-secondary-500: #e88000;
+        --color-secondary-600: #bb6100;
+        --color-secondary-700: #974a00;
+        --color-secondary-800: #f37d68;
     }
 
 /* ==========================================================================
