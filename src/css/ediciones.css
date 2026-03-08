@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. SEDIPRO-BASE (El ADN del sistema)
+   1. SEDIPRO-BASE
    ========================================================================== */
 :root {
     /* Tipografía */
@@ -33,6 +33,9 @@
     --color-primary-400: #29427e;
     --color-primary-500: #1d2f5a;
     --color-primary-alpha-10: rgba(52, 84, 161, 0.1);
+    --color-primary-alpha-5: rgba(52, 84, 161, 0.05);
+    --color-primary-alpha-2: rgba(52, 84, 161, 0.02);
+    --color-primary-alpha-1: rgba(52, 84, 161, 0.01);
 
     /* Secondary Colors (Base) */
     --color-secondary-100: #979ad4;
@@ -42,6 +45,7 @@
     --color-secondary-500: #191a3c;
     --color-secondary-alpha-10: rgba(58, 40, 149, 0.1);
     --color-secondary-alpha-5: rgba(58, 40, 149, 0.05);
+    --color-secondary-alpha-2: rgba(58, 40, 149, 0.02);
 
     /* Neutral Colors */
     --color-neutral-0: #ffffff;
@@ -64,6 +68,9 @@
     --color-accent-400: #6c2d91;
     --color-accent-500: #672577;
     --color-accent-600: #3c1645;
+    --color-accent-alpha-10: rgba(103, 37, 119, 0.1);
+    --color-accent-alpha-5: rgba(103, 37, 119, 0.05);
+    --color-accent-alpha-2: rgba(103, 37, 119, 0.02);
 
     /* Semantic / Theme Colors */
     --color-accent: var(--color-neutral-800);
@@ -124,11 +131,13 @@
 }
 
 /* ==========================================================================
-   2. EDICIONES (Temas por versión)
+   2. EDICIONES
    ========================================================================== */
 
 /* Proyectando Vocaciones 1.0 (Azules y Naranjas) */
 [data-edition="1.0"] {
+    --gradient-section: linear-gradient(135deg, rgba(27, 56, 94, 0.03) 0%, rgba(239, 109, 19, 0.01) 100%);
+    
     --color-primary-100: #e7eff8;
     --color-primary-200: #adc5e2;
     --color-primary-300: #6085b7;
@@ -155,6 +164,8 @@
 
 /* Proyectando Vocaciones 2.0 (Azul a Verde azulado y Dorados) */
 [data-edition="2.0"] {
+    --gradient-section: linear-gradient(135deg, rgba(9, 74, 134, 0.03) 0%, rgba(244, 200, 21, 0.01) 100%);
+    
     --color-primary-100: #094a86;
     --color-primary-200: #0d6db5;
     --color-primary-300: #1593c6;
@@ -180,6 +191,8 @@
 
 /* Proyectando Vocaciones 3.0 (Morados y Naranjas/Amarillos) */
 [data-edition="3.0"] {
+    --gradient-section: linear-gradient(135deg, rgba(156, 21, 208, 0.03) 0%, rgba(232, 128, 0, 0.01) 100%);
+    
     --color-primary-100: #ebd4f4;
     --color-primary-200: #d5a5eb;
     --color-primary-300: #c175e2;
@@ -325,7 +338,6 @@
     border: 3px solid var(--color-neutral-300);
     border-radius: 50%;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .timeline-point:hover .timeline-dot {
@@ -339,8 +351,7 @@
     height: 28px;
     background: var(--color-primary-400);
     border-color: var(--color-primary-300);
-    box-shadow: 0 0 0 8px var(--color-primary-alpha-10),
-                0 0 20px var(--color-primary-200);
+    box-shadow: 0 0 0 8px var(--color-primary-alpha-10);
 }
 
 .timeline-badge {
@@ -436,12 +447,23 @@
     min-width: 0;
 }
 
+/* ===========================
+   SECCIONES DE INFORMACIÓN
+   =========================== */
+
 .info-section {
-    background: var(--color-neutral-100);
-    border-radius: 20px;
+    background: var(--gradient-section, linear-gradient(135deg, var(--color-primary-alpha-2) 0%, var(--color-primary-alpha-1) 100%));
+    border-radius: 24px;
     padding: 40px;
     border: 1px solid var(--color-neutral-200);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px var(--color-primary-alpha-2);
+    transition: all 0.3s ease;
+}
+
+.info-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--color-primary-alpha-5);
+    border-color: var(--color-primary-200);
 }
 
 .section-title {
@@ -459,13 +481,14 @@
     color: var(--color-neutral-0);
     width: 50px;
     height: 50px;
-    border-radius: 12px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     font-weight: 700;
     flex-shrink: 0;
+    box-shadow: 0 4px 10px var(--color-primary-alpha-10);
 }
 
 .section-text {
@@ -488,18 +511,18 @@
 .stat-card {
     background: var(--color-neutral-0);
     border: 2px solid var(--color-neutral-200);
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 24px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px var(--color-primary-alpha-2);
 }
 
 .stat-card:hover {
-    background: var(--color-neutral-100);
-    border-color: var(--color-primary-400);
+    background: var(--color-neutral-0);
+    border-color: var(--color-primary-300);
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px var(--color-primary-alpha-10);
+    box-shadow: 0 12px 30px var(--color-primary-alpha-10);
 }
 
 .stat-number {
@@ -548,19 +571,19 @@
     height: 60px;
     background: var(--color-neutral-0);
     border: 1px solid var(--color-neutral-200);
-    border-radius: 12px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
     flex-shrink: 0;
     transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px var(--color-primary-alpha-2);
 }
 
 .aliado-logo-card:hover {
     border-color: var(--color-primary-400);
-    box-shadow: 0 4px 12px var(--color-primary-alpha-10);
+    box-shadow: 0 8px 20px var(--color-primary-alpha-10);
     transform: translateY(-2px);
 }
 
@@ -601,11 +624,18 @@
     color: var(--color-neutral-700);
     font-size: 15px;
     line-height: 1.6;
-    padding: 16px;
+    padding: 16px 20px;
     background: var(--color-neutral-0);
-    border-radius: 12px;
+    border-radius: 16px;
     border-left: 3px solid var(--color-primary-400);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px var(--color-primary-alpha-2);
+    transition: all 0.3s ease;
+}
+
+.objective-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 20px var(--color-primary-alpha-10);
+    border-left-color: var(--color-primary-300);
 }
 
 .objective-icon {
@@ -627,17 +657,17 @@
 .activity-card {
     background: var(--color-neutral-0);
     border: 1px solid var(--color-neutral-200);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 20px;
     transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px var(--color-primary-alpha-2);
 }
 
 .activity-card:hover {
-    background: var(--color-neutral-100);
-    border-color: var(--color-primary-400);
+    background: var(--color-neutral-0);
+    border-color: var(--color-primary-300);
     transform: translateX(8px);
-    box-shadow: 0 4px 12px var(--color-primary-alpha-10);
+    box-shadow: 0 12px 25px var(--color-primary-alpha-10);
 }
 
 .activity-name {
@@ -655,20 +685,20 @@
 }
 
 /* ===========================
-   ORGANIZADORES (Con soporte de temas)
+   ORGANIZADORES
    =========================== */
 
 .organizadores-section {
-    margin-top: 2rem;
-    padding-top: 1rem;
+    margin-top: 0rem;
+    padding-top: 3rem;
     border-top: 1px solid var(--color-neutral-200);
 }
 
-.organizadores-section .area-section {
+.organizadores-section .area-section_edicion {
     margin-bottom: 2.5rem;
 }
 
-.organizadores-section .area-title {
+.organizadores-section .area-title_edicion {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-neutral-800);
@@ -676,182 +706,11 @@
     font-family: var(--font-inter);
 }
 
-.organizadores-section .area-description {
-    font-size: 0.85rem;
+.organizadores-section .area-description_edicion {
+    font-size: 16px;
     color: var(--color-neutral-600);
     margin-bottom: 1rem;
     font-family: var(--font-inter);
-}
-
-/* Estilos para StaticTeam (miembros fijos) */
-.static-team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.static-member-card {
-    background: var(--color-neutral-0);
-    border: 1px solid var(--color-neutral-200);
-    border-radius: 16px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.static-member-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-primary-300);
-    box-shadow: 0 8px 16px var(--color-primary-alpha-10);
-}
-
-.static-member-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 3px solid var(--color-primary-200);
-    transition: all 0.3s ease;
-}
-
-.static-member-card:hover .static-member-image {
-    border-color: var(--color-primary-400);
-    transform: scale(1.05);
-}
-
-.static-member-name {
-    font-weight: 600;
-    color: var(--color-neutral-800);
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
-    font-family: var(--font-inter);
-}
-
-.static-member-role {
-    font-size: 0.85rem;
-    color: var(--color-neutral-600);
-    margin-bottom: 0.5rem;
-    font-family: var(--font-inter);
-}
-
-.static-member-leader-badge {
-    background: var(--color-accent-300);
-    color: var(--color-neutral-0);
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.2rem 0.75rem;
-    border-radius: 20px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Estilos para InfiniteSlider */
-.slider-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 1rem 0;
-}
-
-.slider-track {
-    display: flex;
-    gap: 1.5rem;
-    animation: scroll 30s linear infinite;
-    width: max-content;
-}
-
-.slider-track:hover {
-    animation-play-state: paused;
-}
-
-.slider-member-card {
-    background: var(--color-neutral-0);
-    border: 1px solid var(--color-neutral-200);
-    border-radius: 16px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    min-width: 180px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.slider-member-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-primary-300);
-    box-shadow: 0 8px 16px var(--color-primary-alpha-10);
-}
-
-.slider-member-image {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 3px solid var(--color-primary-200);
-    transition: all 0.3s ease;
-}
-
-.slider-member-card:hover .slider-member-image {
-    border-color: var(--color-primary-400);
-    transform: scale(1.05);
-}
-
-.slider-member-name {
-    font-weight: 600;
-    color: var(--color-neutral-800);
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
-    font-family: var(--font-inter);
-}
-
-.slider-member-role {
-    font-size: 0.8rem;
-    color: var(--color-neutral-600);
-    margin-bottom: 0.5rem;
-    font-family: var(--font-inter);
-}
-
-.slider-member-leader-badge {
-    background: var(--color-accent-300);
-    color: var(--color-neutral-0);
-    font-size: 0.65rem;
-    font-weight: 600;
-    padding: 0.15rem 0.6rem;
-    border-radius: 20px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* Gradientes laterales para el slider */
-.slider-container::before,
-.slider-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100px;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.slider-container::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-neutral-100), transparent);
-}
-
-.slider-container::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-neutral-100), transparent);
 }
 
 /* ===========================
@@ -864,19 +723,19 @@
     min-width: 0;
 }
 
-.carousel-container {
-    background: var(--color-neutral-100);
-    border-radius: 20px;
-    padding: 20px;
+.carousel-container_edicion {
+    background: var(--gradient-section, linear-gradient(135deg, var(--color-primary-alpha-2) 0%, var(--color-primary-alpha-1) 100%));
+    border-radius: 24px;
+    padding: 0rem;
     border: 1px solid var(--color-neutral-200);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 25px var(--color-primary-alpha-5);
 }
 
 .carousel-wrapper {
     position: relative;
     width: 100%;
     height: 600px;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     background: var(--color-neutral-200);
 }
@@ -885,7 +744,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 10px;
 }
 
 .carousel-button {
@@ -905,7 +764,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     z-index: 2;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-button:hover {
@@ -913,6 +772,7 @@
     border-color: var(--color-primary-400);
     color: var(--color-neutral-0);
     transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 20px var(--color-primary-alpha-20);
 }
 
 .carousel-button-prev { left: 20px; }
@@ -982,16 +842,14 @@
 }
 
 .dark .info-section,
-.dark .carousel-container {
-    background: var(--color-neutral-800);
+.dark .carousel-container_edicion {
+    background: linear-gradient(135deg, var(--color-neutral-800), var(--color-neutral-850));
     border-color: var(--color-neutral-700);
 }
 
 .dark .stat-card,
 .dark .activity-card,
-.dark .objective-item,
-.dark .static-member-card,
-.dark .slider-member-card {
+.dark .objective-item {
     background: var(--color-neutral-800);
     border-color: var(--color-neutral-700);
     color: var(--color-neutral-200);
@@ -1119,22 +977,6 @@
         width: 64px;
         height: 48px;
     }
-
-    .static-team-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 1rem;
-    }
-
-    .slider-member-card {
-        min-width: 140px;
-        padding: 1rem;
-    }
-
-    .static-member-image,
-    .slider-member-image {
-        width: 70px;
-        height: 70px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1160,15 +1002,5 @@
 
     .stat-number {
         font-size: 28px;
-    }
-
-    .static-team-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
-
-    .static-member-image,
-    .slider-member-image {
-        width: 60px;
-        height: 60px;
     }
 }

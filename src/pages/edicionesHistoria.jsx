@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import '../css/ediciones.css';
 import { editionsData } from '../data/editionsData';
-
-// Importar componentes de organizadores (ajusta las rutas según tu estructura)
+// componentes de organizadores
 import StaticTeam from '../components/organizadores/StaticTeam';
 import InfiniteSlider from '../components/organizadores/InfiniteSlider';
+import PixelTransition from '../components/organizadores/PixelTransition';
+import '../css/organizadores/Organizadores.css';
 
 const EdicionesHistoria = () => {
     const [selectedEdition, setSelectedEdition] = useState(editionsData[editionsData.length - 1]);
@@ -30,7 +31,7 @@ const EdicionesHistoria = () => {
     };
 
     return (
-        <div 
+        <div
             className="ediciones-page"
             data-edition={selectedEdition.version}
         >
@@ -117,6 +118,39 @@ const EdicionesHistoria = () => {
                             transition={{ duration: 0.4, delay: 0.1 }}
                         >
                             {selectedEdition.fecha}
+                        </motion.div>
+
+                        <motion.div
+                            className="edition-main-title"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: 0.2 }}
+                        >
+                            <PixelTransition
+                                firstContent={
+                                    <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#ffffff" }}>
+                                        <img
+                                            src={selectedEdition.logo}
+                                            alt="Logo Proyectando Vocaciones"
+                                            style={{ maxWidth: "80%", maxHeight: "80%", objectFit: "contain" }}
+                                        />
+                                    </div>
+                                }
+                                secondContent={
+                                    <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#ffffff" }}>
+                                        <img
+                                            src={selectedEdition.todos}
+                                            alt="Logo Proyectando Vocaciones"
+                                            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+                                        />
+                                    </div>
+                                }
+                                gridSize={10}
+                                pixelColor="#ffffff"
+                                animationStepDuration={0.4}
+                                aspectRatio="35%"
+                                style={{ width: '100%', maxWidth: '800px', margin: '0 auto', background: '#ffffff', border: 'none' }}
+                            />
                         </motion.div>
 
                         <motion.h2
@@ -213,7 +247,9 @@ const EdicionesHistoria = () => {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ duration: 0.3, delay: 0.7 + (idx * 0.1) }}
                                         >
-                                            <span className="objective-icon">🎯</span>
+                                            <span className="objective-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-goal-icon lucide-goal objective-icon"><path d="M12 13V2l8 4-8 4" /><path d="M20.561 10.222a9 9 0 1 1-12.55-5.29" /><path d="M8.002 9.997a5 5 0 1 0 8.9 2.02" /></svg>
+                                            </span>
                                             <span>{objetivo}</span>
                                         </motion.li>
                                     ))}
@@ -258,15 +294,15 @@ const EdicionesHistoria = () => {
                                     <span className="section-number">05</span>
                                     Equipo Organizador
                                 </h4>
-                                <p className="area-description">
-                                    Talento humano que hizo posible Proyectando Vocaciones {selectedEdition.version}.
+                                <p className="area-description_edicion">
+                                    Talento humano que hizo posible la realización de Proyectando Vocaciones {selectedEdition.version}, gracias al compromiso, esfuerzo y dedicación de cada uno.
                                 </p>
 
                                 {selectedEdition.organizadores.map((area, index) => (
-                                    <section key={index} className="area-section">
+                                    <section key={index} className="area-section_edicion">
                                         <div className="area-title-wrapper">
-                                            <h5 className="area-title">{area.area}</h5>
-                                            <p className="area-description">{area.description}</p>
+                                            <h5 className="area-title_edicion">{area.area}</h5>
+                                            <p className="area-description_edicion">{area.description}</p>
                                         </div>
 
                                         {area.area.toLowerCase().includes("dirección") || area.members.length <= 2 ? (
@@ -285,7 +321,7 @@ const EdicionesHistoria = () => {
                         {/* Columna derecha - Carrusel de imágenes */}
                         <div className="edition-carousel-column">
                             <motion.div
-                                className="carousel-container"
+                                className="carousel-container_edicion"
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: 0.5 }}

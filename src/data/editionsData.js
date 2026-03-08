@@ -1,4 +1,3 @@
-// src/data/editionsData.js
 import { organizadoresDataPV1 } from './organizadoresDataPV1';
 import { organizadoresDataPV2 } from './organizadoresDataPV2';
 import { organizadoresDataPV3 } from './organizadoresDataPV3';
@@ -7,10 +6,12 @@ export const editionsData = [
     {
         id: 1,
         version: "1.0",
-        year: 2024,
+        logo: "/ediciones/1/logo.png",
+        todos: "/ediciones/1/todos.png",
+        year: 2022,
         title: "El Inicio",
         fecha: "16 de Diciembre 2022",
-        description: "Proyectando Vocaciones busca orientar a los estudiantes pre universitarios de los distintos colegios y academias de la ciudad de Trujillo para que puedan escoger de manera adecuada la carrera universitaria que estudiarán. Contará con el apoyo de los integrantes de SEDIPRO UNT, quienes realizarán una feria laboral que se llevará a cabo el 18 y 19 de noviembre en las instalaciones de la Universidad Nacional de Trujillo.",
+        description: "Proyectando Vocaciones 1.0 buscó orientar a los estudiantes preuniversitarios de los distintos colegios y academias de la ciudad de Trujillo para que pudieran escoger de manera adecuada la carrera universitaria que estudiarían. Contó con el apoyo de los integrantes de SEDIPRO UNT, quienes realizaron una feria laboral que se llevó a cabo el 18 y 19 de noviembre en las instalaciones de la Universidad Nacional de Trujillo.",
         objetivos: [
             "Dar a conocer las diferentes carreras profesionales que ofrece la Universidad Nacional de Trujillo.",
             "Ayudar a tomar una decisión informada con respecto a la carrera que elijan.",
@@ -33,30 +34,31 @@ export const editionsData = [
         estadisticas: [
             { numero: "100+", label: "Asistentes" },
             { numero: "10", label: "Carreras" },
-            { numero: "10", label: "Aliados" }
+            { numero: "6", label: "Aliados" }
         ],
         aliados: [
-            { src: "/aliados/ed1/aliado1.png", nombre: "Aliado 1" },
-            { src: "/aliados/ed1/aliado2.png", nombre: "Aliado 2" },
-            { src: "/aliados/ed1/aliado3.png", nombre: "Aliado 3" },
-            { src: "/aliados/ed1/aliado4.png", nombre: "Aliado 4" },
-            { src: "/aliados/ed1/aliado5.png", nombre: "Aliado 5" }
+            { src: "/ediciones/1/aliados-1.png", nombre: "CEICI" },
+            { src: "/ediciones/1/aliados-2.png", nombre: "CEIIND" },
+            { src: "/ediciones/1/aliados-3.png", nombre: "CEAU" },
+            { src: "/ediciones/1/aliados-4.png", nombre: "CEIMET" },
+            { src: "/ediciones/1/aliados-5.png", nombre: "CEFIM" },
+            { src: "/ediciones/1/aliados-6.png", nombre: "CEFEIA" },
         ],
         imagenes: [
-            "/ediciones/pv3.0-one.jpg",
-            "/ediciones/pv3.0-two.jpg",
-            "/ediciones/pv3.0-three.jpg",
-            "/ediciones/pv3.0-four.jpg",
-            "/ediciones/pv3.0-five.jpg",
-            "/ediciones/pv3.0-six.jpg",
-            "/ediciones/pv3.0-seven.jpg",
-            "/ediciones/pv3.0-eight.jpg"
+            "ediciones/1/img-2.png",
+            "ediciones/1/img-1.png",
+            "ediciones/1/img-3.png",
+            "ediciones/1/img-4.png",
+            "ediciones/1/img-5.png",
+
         ],
         isActive: false,
         organizadores: organizadoresDataPV1
     },
     {
         id: 2,
+        logo: "/ediciones/2/logo.png",
+        todos: "/ediciones/2/todos.png",
         version: "2.0",
         year: 2025,
         title: "Crecimiento",
@@ -92,27 +94,51 @@ export const editionsData = [
         estadisticas: [
             { numero: "500+", label: "Asistentes" },
             { numero: "25", label: "Carreras" },
-            { numero: "12", label: "Profesionales" }
+            { numero: "26", label: "Aliados" }
         ],
         aliados: [
-            { src: "/aliados/ed2/aliado1.png", nombre: "Aliado 1" },
-            { src: "/aliados/ed2/aliado2.png", nombre: "Aliado 2" },
-            { src: "/aliados/ed2/aliado3.png", nombre: "Aliado 3" },
-            { src: "/aliados/ed2/aliado4.png", nombre: "Aliado 4" },
-            { src: "/aliados/ed2/aliado5.png", nombre: "Aliado 5" },
-            { src: "/aliados/ed2/aliado6.png", nombre: "Aliado 6" }
+            { src: "/ediciones/2/aliados-1.png", nombre: "Aliado 1" },
+            { src: "/ediciones/2/aliados-2.png", nombre: "Aliado 2" },
+            { src: "/ediciones/2/aliados-3.png", nombre: "Aliado 3" },
+            { src: "/ediciones/2/aliados-4.png", nombre: "Aliado 4" },
+            { src: "/ediciones/2/aliados-5.png", nombre: "Aliado 5" },
+            { src: "/ediciones/2/aliados-6.png", nombre: "Aliado 6" },
+            { src: "/ediciones/2/aliados-7.png", nombre: "Aliado 7" },
+            { src: "/ediciones/2/aliados-8.png", nombre: "Aliado 8" },
+            { src: "/ediciones/2/aliados-9.png", nombre: "Aliado 9" },
+            { src: "/ediciones/2/aliados-10.png", nombre: "Aliado 10" },
+            { src: "/ediciones/2/aliados-11.png", nombre: "Aliado 11" },
+            { src: "/ediciones/2/aliados-12.png", nombre: "Aliado 12" },
+            { src: "/ediciones/2/aliados-13.png", nombre: "Aliado 13" },
+            { src: "/ediciones/2/aliados-14.png", nombre: "Aliado 14" },
+            { src: "/ediciones/2/aliados-15.png", nombre: "Aliado 15" },
+            { src: "/ediciones/2/aliados-16.png", nombre: "Aliado 16" },
+            { src: "/ediciones/2/aliados-17.png", nombre: "Aliado 17" },
+            { src: "/ediciones/2/aliados-18.png", nombre: "Aliado 18" },
+            { src: "/ediciones/2/aliados-19.png", nombre: "Aliado 19" },
+            { src: "/ediciones/2/aliados-20.png", nombre: "Aliado 20" },
+            { src: "/ediciones/2/aliados-21.png", nombre: "Aliado 21" },
+            { src: "/ediciones/2/aliados-22.png", nombre: "Aliado 22" },
+            { src: "/ediciones/2/aliados-23.png", nombre: "Aliado 23" },
+            { src: "/ediciones/2/aliados-24.png", nombre: "Aliado 24" },
+            { src: "/ediciones/2/aliados-25.png", nombre: "Aliado 25" },
+            { src: "/ediciones/2/aliados-26.png", nombre: "Aliado 26" },
         ],
         imagenes: [
-            "/ediciones/pv2.0-organizadores.jpg",
-            "/ediciones/pv2.0-recorrido.jpg",
-            "/ediciones/pv2.0-estudiantes.jpg",
-            "/ediciones/pv2.0-general.jpg"
+            "/ediciones/2/img-6.JPG",
+            "/ediciones/2/img-2.JPG",
+            "/ediciones/2/img-1.JPG",
+            "/ediciones/2/img-3.JPG",
+            "/ediciones/2/img-4.JPG",
+            "/ediciones/2/img-5.JPG",
         ],
         isActive: false,
         organizadores: organizadoresDataPV2
     },
     {
         id: 3,
+        logo: "/ediciones/3/logo.png",
+        todos: "/ediciones/3/todos.png",
         version: "3.0",
         year: 2026,
         title: "Expansión Total",
@@ -149,26 +175,45 @@ export const editionsData = [
         estadisticas: [
             { numero: "1000+", label: "Asistentes" },
             { numero: "35+", label: "Carreras" },
-            { numero: "20+", label: "Profesionales" }
+            { numero: "26+", label: "Aliados" }
         ],
         aliados: [
-            { src: "/aliados/ed3/aliado1.png", nombre: "Aliado 1" },
-            { src: "/aliados/ed3/aliado2.png", nombre: "Aliado 2" },
-            { src: "/aliados/ed3/aliado3.png", nombre: "Aliado 3" },
-            { src: "/aliados/ed3/aliado4.png", nombre: "Aliado 4" },
-            { src: "/aliados/ed3/aliado5.png", nombre: "Aliado 5" },
-            { src: "/aliados/ed3/aliado6.png", nombre: "Aliado 6" },
-            { src: "/aliados/ed3/aliado7.png", nombre: "Aliado 7" }
+            { src: "/ediciones/2/aliados-1.png", nombre: "Aliado 1" },
+            { src: "/ediciones/2/aliados-2.png", nombre: "Aliado 2" },
+            { src: "/ediciones/2/aliados-3.png", nombre: "Aliado 3" },
+            { src: "/ediciones/2/aliados-4.png", nombre: "Aliado 4" },
+            { src: "/ediciones/2/aliados-5.png", nombre: "Aliado 5" },
+            { src: "/ediciones/2/aliados-6.png", nombre: "Aliado 6" },
+            { src: "/ediciones/2/aliados-7.png", nombre: "Aliado 7" },
+            { src: "/ediciones/2/aliados-8.png", nombre: "Aliado 8" },
+            { src: "/ediciones/2/aliados-9.png", nombre: "Aliado 9" },
+            { src: "/ediciones/2/aliados-10.png", nombre: "Aliado 10" },
+            { src: "/ediciones/2/aliados-11.png", nombre: "Aliado 11" },
+            { src: "/ediciones/2/aliados-12.png", nombre: "Aliado 12" },
+            { src: "/ediciones/2/aliados-13.png", nombre: "Aliado 13" },
+            { src: "/ediciones/2/aliados-14.png", nombre: "Aliado 14" },
+            { src: "/ediciones/2/aliados-15.png", nombre: "Aliado 15" },
+            { src: "/ediciones/2/aliados-16.png", nombre: "Aliado 16" },
+            { src: "/ediciones/2/aliados-17.png", nombre: "Aliado 17" },
+            { src: "/ediciones/2/aliados-18.png", nombre: "Aliado 18" },
+            { src: "/ediciones/2/aliados-19.png", nombre: "Aliado 19" },
+            { src: "/ediciones/2/aliados-20.png", nombre: "Aliado 20" },
+            { src: "/ediciones/2/aliados-21.png", nombre: "Aliado 21" },
+            { src: "/ediciones/2/aliados-22.png", nombre: "Aliado 22" },
+            { src: "/ediciones/2/aliados-23.png", nombre: "Aliado 23" },
+            { src: "/ediciones/2/aliados-24.png", nombre: "Aliado 24" },
+            { src: "/ediciones/2/aliados-25.png", nombre: "Aliado 25" },
+            { src: "/ediciones/2/aliados-26.png", nombre: "Aliado 26" },
         ],
         imagenes: [
-            "/ediciones/pv3.0-one.jpg",
-            "/ediciones/pv3.0-two.jpg",
-            "/ediciones/pv3.0-three.jpg",
-            "/ediciones/pv3.0-four.jpg",
-            "/ediciones/pv3.0-five.jpg",
-            "/ediciones/pv3.0-six.jpg",
-            "/ediciones/pv3.0-seven.jpg",
-            "/ediciones/pv3.0-eight.jpg"
+            "/ediciones/3/img-6.jpg",
+            "/ediciones/3/img-2.jpg",
+            "/ediciones/3/img-1.jpg",
+            "/ediciones/3/img-3.jpg",
+            "/ediciones/3/img-4.jpg",
+            "/ediciones/3/img-5.jpg",
+            "/ediciones/3/img-7.jpg",
+            "/ediciones/3/img-8.jpg",
         ],
         isActive: true,
         organizadores: organizadoresDataPV3
