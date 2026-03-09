@@ -1,7 +1,7 @@
-import { editions } from '../lib/routes';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { scrollToSection } from '../lib/utils';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -9,67 +9,62 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Detectar scroll para cambiar header
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleEditionChange = (e) => {
-    if (e.target.value) {
-      navigate(`/ediciones/${e.target.value}`);
+  const handleSectionClick = (e, sectionId) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    if (location.pathname !== '/' && location.pathname !== '/home') {
+      navigate('/');
+      setTimeout(() => scrollToSection(sectionId), 300);
+    } else {
+      scrollToSection(sectionId);
     }
   };
 
   const handleHomeClick = (e) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
     } else {
-      navigate('/home');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    setIsMobileMenuOpen(false); // Cierra menú mobile si está abierto
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const handlePageClick = (e, path) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    navigate(path);
   };
 
   return (
-    <header className={isScrolled ? 'scrolled' : ''}>
-      <div className="container">
+    <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="header-container">
         <div className="logo-container">
+          <a href="#home" onClick={handleHomeClick} className="logo-link">
+            <span className="logo-text">Proyectando Vocaciones</span>
+          </a>
         </div>
 
         <nav className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <a href="#home" onClick={handleHomeClick}>Home</a>
-          <a href="#quienes-somos" onClick={() => setIsMobileMenuOpen(false)}>Quiénes Somos</a>
-          <a href="#objetivos" onClick={() => setIsMobileMenuOpen(false)}>Objetivos</a>
-          <a href="#evento" onClick={() => setIsMobileMenuOpen(false)}>Sobre el Evento</a>
-          <a href="#publico" onClick={() => setIsMobileMenuOpen(false)}>Público Objetivo</a>
-          {/* <a href="/carreras" onClick={() => setIsMobileMenuOpen(false)}>Carreras</a> */}
-          {/* <a href="/organizadores" onClick={() => setIsMobileMenuOpen(false)}>Organizadores</a> */}
-          <a href="/ediciones" onClick={() => setIsMobileMenuOpen(false)}>Ediciones</a>
-          <a href="/galeria" onClick={() => setIsMobileMenuOpen(false)}>Galería</a>
+          <a href="#quienes-somos" onClick={(e) => handleSectionClick(e, 'quienes-somos')}>Quiénes Somos</a>
+          <a href="#objetivos" onClick={(e) => handleSectionClick(e, 'objetivos')}>Objetivos</a>
+          <a href="#evento" onClick={(e) => handleSectionClick(e, 'evento')}>Sobre el Evento</a>
+          <a href="#publico" onClick={(e) => handleSectionClick(e, 'publico')}>Público Objetivo</a>
+          <a href="/ediciones" onClick={(e) => handlePageClick(e, '/ediciones')}>Ediciones</a>
+          <a href="/galeria" onClick={(e) => handlePageClick(e, '/galeria')}>Galería</a>
         </nav>
 
-        <div className="flex items-center gap-4">
-          {/* <select onChange={handleEditionChange} className="edition-select">
-            <option value="">Ediciones</option>
-            {editions.map(ed => (
-              <option key={ed.value} value={ed.value}>
-                {ed.label}
-              </option>
-            ))}
-          </select> */}
-
-          <FaBars className="hamburger" onClick={toggleMobileMenu} />
-        </div>
+        <button className="hamburger" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Menú">
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
     </header>
   );
