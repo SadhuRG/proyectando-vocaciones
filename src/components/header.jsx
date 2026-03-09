@@ -58,8 +58,6 @@ const Header = () => {
           <a href="#objetivos" onClick={(e) => handleSectionClick(e, 'objetivos')}>Objetivos</a>
           <a href="#evento" onClick={(e) => handleSectionClick(e, 'evento')}>Sobre el Evento</a>
           <a href="#publico" onClick={(e) => handleSectionClick(e, 'publico')}>Público Objetivo</a>
-          <a href="/carreras" onClick={(e) => handlePageClick(e, '/carreras')}>Carreras</a>
-          <a href="/organizadores" onClick={(e) => handlePageClick(e, '/organizadores')}>Organizadores</a>
           <a href="/ediciones" onClick={(e) => handlePageClick(e, '/ediciones')}>Ediciones</a>
           <a href="/galeria" onClick={(e) => handlePageClick(e, '/galeria')}>Galería</a>
         </nav>
