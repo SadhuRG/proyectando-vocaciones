@@ -44,6 +44,20 @@ export const editionsData = [
             { src: "/ediciones/1/aliados-5.png", nombre: "CEFIM" },
             { src: "/ediciones/1/aliados-6.png", nombre: "CEFEIA" },
         ],
+
+        carreras:[
+            {logo:"ediciones/1/administracion.png", nombre:"Administración"},
+            {logo:"ediciones/1/arquitectura.png", nombre:"Arquitectura"},
+            {logo:"ediciones/1/ingCivil.png", nombre:"Ingeniería Civil"},
+            {logo:"ediciones/1/ingenieria-agroindustrial.png", nombre:"Ingeniería Agroindustrial"},
+            {logo:"ediciones/1/agricola.png", nombre:"Ingeniería Agricola"},
+            {logo:"ediciones/1/enfermeria.png", nombre:"Enfermeria"},
+            {logo:"ediciones/1/industrial.png", nombre:"Ingeniería Industrial"},
+            {logo:"ediciones/1/mecanica.png", nombre:"Ingeniería Mecánica"},
+            {logo:"ediciones/1/metalurgica.png", nombre:"Ingeniería Metalurgica"},
+            {logo:"ediciones/1/zootecnia.png", nombre:"Ingeniería Zootecnia"}
+            
+        ],
         imagenes: [
             "ediciones/1/img-2.png",
             "ediciones/1/img-1.png",
@@ -93,7 +107,7 @@ export const editionsData = [
         ],
         estadisticas: [
             { numero: "500+", label: "Asistentes" },
-            { numero: "25", label: "Carreras" },
+            { numero: "26", label: "Carreras" },
             { numero: "26", label: "Aliados" }
         ],
         aliados: [
@@ -123,6 +137,35 @@ export const editionsData = [
             { src: "/ediciones/2/aliados-24.png", nombre: "Aliado 24" },
             { src: "/ediciones/2/aliados-25.png", nombre: "Aliado 25" },
             { src: "/ediciones/2/aliados-26.png", nombre: "Aliado 26" },
+        ],
+        carreras:[
+            {logo:"ediciones/2/administracion.png", nombre:"Administración"},
+            {logo:"ediciones/2/arquitectura.png", nombre:"Arquitectura"},
+            {logo:"ediciones/2/ingCivil.png", nombre:"Ingeniería Civil"},
+            {logo:"ediciones/2/economia.png", nombre:"Economía"},
+            {logo:"ediciones/2/informatica.png", nombre:"Ingeniería Informática"},
+            {logo:"ediciones/2/cienciasPoliticas.png", nombre:"Ciencias Politicas y Gobernabilidad"},
+            {logo:"ediciones/2/Biologia-Pesquera.png", nombre:"Biologia Pesquera"},
+            {logo:"ediciones/2/ambiental.png", nombre:"Ingeniería Ambiental"},
+            {logo:"ediciones/2/agricola.png", nombre:"Ingeniería Agricola"},
+            {logo:"ediciones/2/industrial.png", nombre:"Ingeniería Industrial"},
+            {logo:"ediciones/2/ingenieria-agroindustrial.png", nombre:"Ingeniería Agroindustrial"},
+            {logo:"ediciones/2/estomatologia.png", nombre:"Estomatologia"},
+            {logo:"ediciones/2/farmacia-Bioquimica.png", nombre:"Farmacia y Bioquimica"},
+            {logo:"ediciones/2/materiales.png", nombre:"Ingeniería de Materiales"},
+             {logo:"ediciones/1/mecanica.png", nombre:"Ingeniería Mecánica"},
+            {logo:"ediciones/2/derecho.png", nombre:"Derecho"},
+            {logo:"ediciones/2/turismo.png", nombre:"Turismo"},
+            {logo:"ediciones/2/quimica.png", nombre:"Química"},
+            {logo:"ediciones/2/mecatronica.png", nombre:"Mecatrónica"},
+            {logo:"ediciones/2/trabajo-social.png", nombre:"Trabajo Social"},
+            {logo:"ediciones/2/ingenieria-agroindustrial.png", nombre:"Educación Secundaria: Lengua y Literatura"},
+            {logo:"ediciones/2/medicina.png", nombre:"Medicina"},
+            {logo:"ediciones/2/enfermeria.png", nombre:"Enfermería"},
+            {logo:"ediciones/2/microbiologia-parasitologia.png.jpeg", nombre:"Microbiología y Parasitología"},
+            {logo:"ediciones/2/fisica.png", nombre:"Física"},
+            {logo:"ediciones/2/metalurgica.png", nombre:"Ingeniería Metalurgica"},
+            
         ],
         imagenes: [
             "/ediciones/2/img-6.JPG",
@@ -174,8 +217,8 @@ export const editionsData = [
         ],
         estadisticas: [
             { numero: "1000+", label: "Asistentes" },
-            { numero: "35+", label: "Carreras" },
-            { numero: "26+", label: "Aliados" }
+            { numero: "36", label: "Carreras" },
+            { numero: "30+", label: "Aliados" }
         ],
         aliados: [
             { src: "/ediciones/2/aliados-1.png", nombre: "Aliado 1" },
@@ -204,6 +247,45 @@ export const editionsData = [
             { src: "/ediciones/2/aliados-24.png", nombre: "Aliado 24" },
             { src: "/ediciones/2/aliados-25.png", nombre: "Aliado 25" },
             { src: "/ediciones/2/aliados-26.png", nombre: "Aliado 26" },
+        ],
+        carreras:[
+            {logo:"ediciones/3/administracion.png", nombre:"Administración"},
+            {logo:"ediciones/3/arquitectura.png", nombre:"Arquitectura"},
+            {logo:"ediciones/3/ingCivil.png", nombre:"Ingeniería Civil"},
+            {logo:"ediciones/3/economia.png", nombre:"Economía"},
+            {logo:"ediciones/3/informatica.png", nombre:"Ingeniería Informática"},
+            {logo:"ediciones/3/cienciasPoliticas.png", nombre:"Ciencias Politicas y Gobernabilidad"},
+            {logo:"ediciones/3/contabilidad-finanzas.png", nombre:"Contabilidad y Finanzas"},
+            {logo:"ediciones/3/Biologia-Pesquera.png", nombre:"Biologia Pesquera"},
+            {logo:"ediciones/3/estadistica.png", nombre:"Estadística"},
+            {logo:"ediciones/3/ambiental.png", nombre:"Ingeniería Ambiental"},
+            {logo:"ediciones/3/agronomia.png", nombre:"Ingeniería Agronómica"},
+            {logo:"ediciones/3/industrial.png", nombre:"Ingeniería Industrial"},
+            {logo:"ediciones/3/sistemas.png", nombre:"Ingeniería de Sistemas"},
+            {logo:"ediciones/3/minas.png", nombre:"Minas"},
+            {logo:"ediciones/3/ingenieria-agroindustrial.png", nombre:"Ingeniería Agroindustrial"},
+            {logo:"ediciones/3/estomatologia.png", nombre:"Estomatologia"},
+            {logo:"ediciones/3/farmacia-Bioquimica.png", nombre:"Farmacia y Bioquimica"},
+            {logo:"ediciones/3/mecanica.png", nombre:"Ingeniería Mecánica"},
+            {logo:"ediciones/3/derecho.png", nombre:"Derecho"},
+            {logo:"ediciones/3/turismo.png", nombre:"Turismo"},
+            {logo:"ediciones/3/antropologia.png", nombre:"Antropología"},
+            {logo:"ediciones/3/arqueologia.png", nombre:"Arqueología"},
+            {logo:"ediciones/3/quimica.png", nombre:"Química"},
+            {logo:"ediciones/3/mecatronica.png", nombre:"Mecatrónica"},
+            {logo:"ediciones/3/trabajo-social.png", nombre:"Trabajo Social"},
+            {logo:"ediciones/3/ciencias-comunicacion.png", nombre:"Ciencias de la Comunicación"},
+            {logo:"ediciones/3/lengua-literatura.png", nombre:"Educación Secundaria: Lengua y Literatura"},
+            {logo:"ediciones/3/ES-Idiomas.png", nombre:"Educación Secundaria: Idiomas"},
+            {logo:"ediciones/3/educacionPrimaria.png", nombre:"Educación Primaria"},
+            {logo:"ediciones/3/ES-filosifia-psicologia-cienciasSociales.png", nombre:"Educación Secundaria: Filosofía, Psicología y Ciencias Sociales"},
+            {logo:"ediciones/3/medicina.png", nombre:"Medicina"},
+            {logo:"ediciones/3/enfermeria.png", nombre:"Enfermería"},
+            {logo:"ediciones/3/microbiologia-parasitologia.png.jpeg", nombre:"Microbiología y Parasitología"},
+            {logo:"ediciones/3/fisica.png", nombre:"Física"},
+            {logo:"ediciones/3/metalurgica.png", nombre:"Ingeniería Metalurgica"},
+            {logo:"ediciones/3/zootecnia.png", nombre:"Ingeniería Zootecnia"}
+            
         ],
         imagenes: [
             "/ediciones/3/img-6.jpg",
