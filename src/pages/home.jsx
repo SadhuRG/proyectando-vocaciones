@@ -1,14 +1,43 @@
+import { useState, useEffect } from 'react';
 import ScrollArrow from '../components/scroll_arrow';
 import { scrollToSection } from '../lib/utils';
 import '../css/welcome-home/home.css';
 import { FaInfoCircle, FaUsers, FaBullseye, FaGraduationCap, FaRocket, FaEye } from 'react-icons/fa';
 
+// Fotos de fondo — una por cada edición (PV 1.0, 2.0, 3.0)
+import heroBg1 from '../assets/galeria/PV_1.0/Anotación 2026-03-09 182602.webp';
+import heroBg2 from '../assets/galeria/PV_2.0/Fotos_grupales/WhatsApp Image 2025-02-24 at 3.31.28 PM.webp';
+import heroBg3 from '../assets/galeria/PV_3.0/feria-area-a/20260228_094918.webp';
+
+const HERO_BG_IMAGES = [heroBg1, heroBg2, heroBg3];
+const CAROUSEL_INTERVAL = 5000;
+
 const Home = () => {
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % HERO_BG_IMAGES.length);
+    }, CAROUSEL_INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <main className="home-main">
 
       {/* ========== SECCIÓN 1: HERO / HOME ========== */}
       <section id="home" className="section section-hero">
+        {/* Carrusel de fondo — 3 fotos de las ediciones, opacas, sin flechas */}
+        <div className="hero-bg-carousel" aria-hidden="true">
+          {HERO_BG_IMAGES.map((src, i) => (
+            <div
+              key={i}
+              className={`hero-bg-slide ${i === bgIndex ? 'hero-bg-slide--active' : ''}`}
+              style={{ backgroundImage: `url(${src})` }}
+            />
+          ))}
+        </div>
+        <div className="hero-overlay" aria-hidden="true" />
         <div className="section-content hero-content">
           <p className="hero-tag">SEDIPRO UNT presenta</p>
           <h1 className="hero-title">

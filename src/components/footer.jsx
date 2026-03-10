@@ -7,7 +7,7 @@ const Footer = () => (
 
       {/* Redes sociales */}
       <div className="footer-social">
-        <p className="footer-social-label">¡Síguenos en nuestras redes sociales!</p>
+        <p className="footer- social-label">¡Síguenos en nuestras redes sociales!</p>
         <div className="footer-social-icons">
           <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
             <FaFacebook />

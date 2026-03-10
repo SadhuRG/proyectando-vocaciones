@@ -26,148 +26,202 @@
   overflow-x: hidden;
 }
 
-/* ════════════════════════════════════════════════════
-   HERO — oscuro con partículas
-════════════════════════════════════════════════════ */
-.gls-hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  background: linear-gradient(150deg, #0a0a14 0%, #12102a 55%, #0a1220 100%);
-}
-
-.gls-canvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-
-.gls-hero__overlay {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 65% 55% at 50% 50%, transparent 0%, rgba(10,10,20,.6) 100%);
-  pointer-events: none;
-}
-
-.gls-hero__body {
-  position: relative; z-index: 2;
-  text-align: center;
-  padding: 2rem 1.5rem;
-  max-width: 860px; margin: 0 auto;
-  animation: fadeUp .9s ease both;
-}
-
-.gls-hero__eyebrow {
-  display: inline-block;
-  font-size: .72rem; font-weight: 600;
-  letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.4);
-  border: 1px solid rgba(255,255,255,.12);
-  padding: .3rem 1.1rem; border-radius: 100px;
-  margin-bottom: 2rem;
-  animation: fadeUp .7s .1s ease both;
-}
-
-/* Título hero — tipografía refinada */
-.gls-hero__title {
-  display: flex; flex-direction: column; align-items: center;
-  margin-bottom: 1.4rem;
-  gap: .25rem;
-}
-
-.gls-hero__title-top {
-  font-family: var(--ff-serif);
-  font-style: italic;
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  font-weight: 400;
-  color: rgba(255,255,255,.55);
-  letter-spacing: .04em;
-  animation: fadeUp .7s .2s ease both;
-}
-
-.gls-hero__title-main {
-  font-family: var(--ff-sans);
-  font-size: clamp(3rem, 9vw, 7rem);
-  font-weight: 700;
-  line-height: .95;
-  letter-spacing: -.02em;
-  /* Gradiente multicolor que recorre los colores de las 3 ediciones */
-  background: linear-gradient(100deg,
-    #facf2b 0%,
-    #f0ab2b 18%,
-    #ef6d13 34%,
-    #ffffff 50%,
-    #9c15d0 66%,
-    #094a86 82%,
-    #facf2b 100%
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeUp .7s .3s ease both, gradShift 8s linear infinite;
-}
-
-@keyframes gradShift {
-  0%   { background-position: 0% 50%;   }
-  100% { background-position: 300% 50%; }
-}
-
-.gls-hero__sub {
-  font-size: 1rem; font-weight: 400;
-  color: rgba(255,255,255,.38);
-  letter-spacing: .06em;
-  margin-bottom: 3rem;
-  animation: fadeUp .7s .45s ease both;
-}
-
-/* Scroll indicator */
-.gls-hero__scroll {
-  display: flex; flex-direction: column; align-items: center; gap: .55rem;
-  animation: fadeUp .7s .6s ease both;
-}
-.gls-hero__scroll span:first-child {
-  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
-  color: rgba(255,255,255,.28);
-}
+/* Chevrons (usados en botón scroll) */
 .gls-hero__chevrons {
   display: flex; flex-direction: column; align-items: center; gap: 2px;
 }
+
 .gls-hero__chevrons span {
   display: block; width: 10px; height: 10px;
-  border-right: 1.5px solid rgba(255,255,255,.35);
-  border-bottom: 1.5px solid rgba(255,255,255,.35);
+  border-right: 1.5px solid var(--txt2);
+  border-bottom: 1.5px solid var(--txt2);
   transform: rotate(45deg);
   animation: chev .9s ease-in-out infinite;
+  opacity: .5;
 }
-.gls-hero__chevrons span:nth-child(2) { animation-delay: .15s; opacity: .7; }
-.gls-hero__chevrons span:nth-child(3) { animation-delay: .3s;  opacity: .4; }
+
+.gls-hero__chevrons span:nth-child(2) { animation-delay: .15s; opacity: .4; }
+.gls-hero__chevrons span:nth-child(3) { animation-delay: .3s;  opacity: .25; }
 
 @keyframes chev {
   0%,100% { transform: rotate(45deg) translate(-2px,-2px); }
   50%      { transform: rotate(45deg) translate(2px,2px); }
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ════════════════════════════════════════════════════
+   GALERÍA — Sedipro UNT · Proyectando Vocaciones
+════════════════════════════════════════════════════ */
+.gls-galeria {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+}
+
+.gls-galeria__intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gls-galeria__eyebrow {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--txt2);
+  margin-bottom: .5rem;
+  display: block;
+}
+
+.gls-galeria__title {
+  font-family: var(--ff-sans);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--txt);
+}
+
+/* Bloques de galería por edición — cuadros mismo tamaño */
+.gls-galeria__bloques {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.gls-bloque {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.gls-bloque--vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gls-bloque__header {
+  margin-bottom: 1.25rem;
+}
+
+.gls-bloque__eyebrow {
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--txt2);
+  display: block;
+  margin-bottom: .35rem;
+}
+
+.gls-bloque__title {
+  font-family: var(--ff-sans);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+}
+
+.gls-bloque__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  cursor: pointer;
+  transition: transform .25s ease;
+}
+
+.gls-bloque__grid:hover {
+  transform: translateY(-2px);
+}
+
+.gls-bloque__frame {
+  aspect-ratio: 1;
+  border: 3px solid var(--bord);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surf);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: border-color .25s, box-shadow .25s;
+}
+
+.gls-bloque:hover .gls-bloque__frame {
+  border-color: var(--ec, var(--bord));
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+}
+
+.gls-bloque__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.gls-bloque__grid:hover .gls-bloque__frame img {
+  transform: scale(1.05);
+}
+
+.gls-bloque__empty {
+  grid-column: 1 / -1;
+  aspect-ratio: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 2px dashed var(--bord);
+  border-radius: 12px;
+  color: var(--txt2);
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+/* Botón scroll a selección de edición */
+.gls-galeria__scroll-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 auto;
+  padding: .8rem 1.5rem;
+  font-family: var(--ff-sans);
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--txt2);
+  background: var(--surf);
+  border: 1.5px solid var(--bord);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .25s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+
+.gls-galeria__scroll-btn:hover {
+  color: var(--txt);
+  border-color: #a3a3b0;
+  transform: translateY(2px);
+}
+
+.gls-galeria__scroll-btn .gls-hero__chevrons {
+  margin-top: .2rem;
+}
+
+@media (max-width: 600px) {
+  .gls-bloque__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
 
 /* ════════════════════════════════════════════════════
-   TIMELINE VERTICAL — intro
+   SELECCIÓN DE EDICIÓN — timeline vertical
 ════════════════════════════════════════════════════ */
 .gls-tl { max-width: 1300px; margin: 0 auto; padding: 5rem 2rem 4rem; }
 
 .gls-tl__intro {
   text-align: center; margin-bottom: 4rem;
 }
-.gls-tl__intro-label {
-  font-size: .72rem; font-weight: 600; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--txt2); margin-bottom: .5rem;
-}
 .gls-tl__intro-title {
   font-family: var(--ff-sans); font-size: clamp(1.6rem, 3.5vw, 2.5rem);
   font-weight: 700; color: var(--txt);
+}
+.gls-tl__intro-desc {
+  font-size: .9rem; color: var(--txt2); margin-top: .5rem;
 }
 
 /* Contenedor con línea central */

@@ -1,5 +1,6 @@
 // src/components/organizadores/GaleriaEdicion.jsx
 import { useState, useEffect, useRef, useCallback } from 'react';
+import '../../css/galeria.css';
 
 const globToUrls = (g) => Object.values(g).map((m) => m.default);
 

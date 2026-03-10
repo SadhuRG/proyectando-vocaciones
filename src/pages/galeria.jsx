@@ -78,53 +78,6 @@ function CollagePanel({ fotos, color }) {
   );
 }
 
-// ── Partículas canvas ─────────────────────────────────────────────
-function Particles() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const c = ref.current; if (!c) return;
-    const ctx = c.getContext('2d');
-    let raf, W, H;
-    const resize = () => { W = c.width = c.offsetWidth; H = c.height = c.offsetHeight; };
-    resize();
-    const SHAPES = ['tri', 'sq', 'circ', 'dia'];
-    const COLORS = ['#9c15d0','#facf2b','#094a86','#f0ab2b','#ef6d13','#1b385e'];
-    const pts = Array.from({ length: 36 }, () => ({
-      x: Math.random() * W, y: Math.random() * H,
-      vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
-      s: Math.random() * 18 + 5,
-      sh: SHAPES[Math.floor(Math.random() * 4)],
-      col: COLORS[Math.floor(Math.random() * 6)],
-      a: Math.random() * .13 + .03,
-      rot: Math.random() * Math.PI * 2, rv: (Math.random() - .5) * .009,
-    }));
-    const draw = p => {
-      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-      ctx.globalAlpha = p.a; ctx.fillStyle = ctx.strokeStyle = p.col; ctx.lineWidth = 1.5;
-      const s = p.s; ctx.beginPath();
-      if (p.sh === 'circ') { ctx.arc(0, 0, s, 0, Math.PI * 2); ctx.fill(); }
-      else if (p.sh === 'sq') { ctx.rect(-s, -s, s * 2, s * 2); ctx.stroke(); }
-      else if (p.sh === 'tri') { ctx.moveTo(0, -s); ctx.lineTo(s * .87, s * .5); ctx.lineTo(-s * .87, s * .5); ctx.closePath(); ctx.stroke(); }
-      else { ctx.moveTo(0, -s); ctx.lineTo(s, 0); ctx.lineTo(0, s); ctx.lineTo(-s, 0); ctx.closePath(); ctx.fill(); }
-      ctx.restore();
-    };
-    const tick = () => {
-      ctx.clearRect(0, 0, W, H);
-      pts.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.rot += p.rv;
-        if (p.x < -50) p.x = W + 50; if (p.x > W + 50) p.x = -50;
-        if (p.y < -50) p.y = H + 50; if (p.y > H + 50) p.y = -50;
-        draw(p);
-      });
-      raf = requestAnimationFrame(tick);
-    };
-    tick();
-    window.addEventListener('resize', resize);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
-  }, []);
-  return <canvas ref={ref} className="gls-canvas" />;
-}
-
 // ── Tarjeta de edición con layout de 3 columnas ───────────────────
 function EdicionCard({ ed, index, onSelect }) {
   const ref = useRef(null);
@@ -205,41 +158,89 @@ function EdicionCard({ ed, index, onSelect }) {
   );
 }
 
+// ── Bloque de galería por edición (cuadros con bordes, mismo tamaño) ─
+function GaleriaBloque({ ed, onSelect }) {
+  const ref = useRef(null);
+  const [vis, setVis] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVis(true); }, { threshold: 0.1 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  const fotos = COLLAGE[ed.id] ?? [];
+  const grid = fotos.slice(0, 6);
+
+  return (
+    <div
+      ref={ref}
+      className={`gls-bloque ${vis ? 'gls-bloque--vis' : ''}`}
+      style={{ '--ec': ed.color, '--ecl': ed.colorLight }}
+    >
+      <div className="gls-bloque__header">
+        <span className="gls-bloque__eyebrow">Sedipro UNT</span>
+        <h3 className="gls-bloque__title" style={{ color: ed.color }}>{ed.version}</h3>
+      </div>
+      <div
+        className="gls-bloque__grid"
+        onClick={() => ed.activa && onSelect(ed)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && ed.activa && onSelect(ed)}
+      >
+        {grid.length > 0 ? (
+          grid.map((src, i) => (
+            <div key={i} className="gls-bloque__frame">
+              <img src={src} alt="" loading="lazy" />
+            </div>
+          ))
+        ) : (
+          <div className="gls-bloque__empty">
+            <span>Próximamente</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Página principal ──────────────────────────────────────────────
 export default function Galeria() {
   const [edicion, setEdicion] = useState(null);
   if (edicion) return <GaleriaEdicion edicion={edicion} onVolver={() => setEdicion(null)} />;
 
+  const seccionEdicionesRef = useRef(null);
+  const scrollToEdiciones = () => {
+    seccionEdicionesRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <main className="gls-page">
 
-      {/* ── Hero ────────────────────────────────────────── */}
-      <header className="gls-hero">
-        <Particles />
-        <div className="gls-hero__overlay" />
-        <div className="gls-hero__body">
-          <span className="gls-hero__eyebrow">Universidad Nacional de Trujillo · SEDIPRO</span>
-          <h1 className="gls-hero__title">
-            <span className="gls-hero__title-top">Galería</span>
-            <span className="gls-hero__title-main">Proyectando<br />Vocaciones</span>
-          </h1>
-          <p className="gls-hero__sub">
-            Tres ediciones · Cientos de momentos · Un propósito
-          </p>
-          <div className="gls-hero__scroll">
-            <span>Explora las ediciones</span>
-            <div className="gls-hero__chevrons">
-              <span /><span /><span />
-            </div>
-          </div>
+      {/* ── Títulos y galerías por edición ───────────────── */}
+      <section className="gls-galeria">
+        <div className="gls-galeria__intro">
+          <p className="gls-galeria__eyebrow">Sedipro UNT</p>
+          <h2 className="gls-galeria__title">Proyectando Vocaciones</h2>
         </div>
-      </header>
 
-      {/* ── Timeline vertical ───────────────────────────── */}
-      <section className="gls-tl">
+        <div className="gls-galeria__bloques">
+          {EDICIONES.map((ed) => (
+            <GaleriaBloque key={ed.id} ed={ed} onSelect={setEdicion} />
+          ))}
+        </div>
+
+        <button className="gls-galeria__scroll-btn" onClick={scrollToEdiciones} type="button">
+          <span>Ver selección de edición</span>
+          <div className="gls-hero__chevrons"><span /><span /><span /></div>
+        </button>
+      </section>
+
+      {/* ── Selección de edición (más detalle) ───────────── */}
+      <section className="gls-tl" ref={seccionEdicionesRef}>
         <div className="gls-tl__intro">
-          <p className="gls-tl__intro-label">Línea de tiempo</p>
-          <h2 className="gls-tl__intro-title">Selecciona una edición</h2>
+          <h2 className="gls-tl__intro-title">Selección de edición</h2>
+          <p className="gls-tl__intro-desc">Explora cada edición con más detalle</p>
         </div>
 
         <div className="gls-tl__body">
