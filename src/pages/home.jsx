@@ -161,11 +161,11 @@ const Home = () => {
           {/* Stats en fila superior */}
           <div className="evento-stats-row">
             <div className="stat-card stat-card--accent">
-              <span className="stat-card-number">100+</span>
-              <span className="stat-card-label">Asistentes esperados</span>
+              <span className="stat-card-number">1500+</span>
+              <span className="stat-card-label">Totalidad de Asistentes</span>
             </div>
             <div className="stat-card">
-              <span className="stat-card-number">20+</span>
+              <span className="stat-card-number">35+</span>
               <span className="stat-card-label">Carreras presentadas</span>
             </div>
           </div>

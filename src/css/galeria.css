@@ -27,14 +27,20 @@
 }
 
 /* ════════════════════════════════════════════════════
-   HERO — oscuro con partículas
+   HERO — morado medio con partículas (colores SEDIPRO)
 ════════════════════════════════════════════════════ */
 .gls-hero {
   position: relative;
   min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  background: linear-gradient(150deg, #0a0a14 0%, #12102a 55%, #0a1220 100%);
+  /* Gradiente morado medio: accent-600 → morado → accent-400 */
+  background: linear-gradient(155deg,
+    var(--color-accent-600, #3c1645) 0%,
+    var(--color-morado, #672577) 40%,
+    var(--color-accent-400, #6c2d91) 70%,
+    var(--color-accent-600, #3c1645) 100%
+  );
 }
 
 .gls-canvas {
@@ -45,7 +51,7 @@
 
 .gls-hero__overlay {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 65% 55% at 50% 50%, transparent 0%, rgba(10,10,20,.6) 100%);
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, transparent 0%, rgba(60,22,69,.45) 100%);
   pointer-events: none;
 }
 
