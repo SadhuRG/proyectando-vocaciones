@@ -2,6 +2,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { scrollToSection } from '../lib/utils';
+import logo from '../assets/SEDIPRO-UNT.png';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ const Header = () => {
       <div className="header-container">
         <div className="logo-container">
           <a href="#home" onClick={handleHomeClick} className="logo-link">
+            <img src={logo} alt="Logo" className="logo-img" width={200} height={200} />
             <span className="logo-text">Proyectando Vocaciones</span>
           </a>
         </div>
