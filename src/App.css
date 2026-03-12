@@ -26,7 +26,7 @@
 .header-container {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 100%;  
   max-width: 1800px;
   margin: 0 auto;
   padding: 0 3rem;
@@ -48,9 +48,12 @@
 
 .logo-text {
   font: var(--Normaltext-16px-Semibold);
+  margin-left: 1rem;
   color: var(--color-secondary-400);
+  font-size: 1.2rem;
   white-space: nowrap;
 }
+
 
 .logo-img {
   height: 36px;
@@ -60,13 +63,14 @@
 /* Navegación */
 .nav-links {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .nav-links a {
   text-decoration: none;
   font: var(--Normaltext-14px-Medium);
+  font-size: 1.125rem; /* ~18px: Home, Quiénes Somos, Objetivos, etc. */
   color: var(--color-neutral-700);
   transition: color 0.2s;
   white-space: nowrap;
