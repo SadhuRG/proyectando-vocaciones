@@ -420,6 +420,8 @@
     padding: 0 28px 8px;
     scrollbar-width: thin;
     scrollbar-color: var(--color-neutral-300) transparent;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .carreras-modal-body::-webkit-scrollbar {

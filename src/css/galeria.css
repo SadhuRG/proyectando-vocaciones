@@ -41,9 +41,9 @@
   animation:fadeUp .9s ease both;
 }
 .gls-hero__eyebrow {
-  display:inline-block; font-size:.72rem; font-weight:600;
+  display:inline-block; font-size:.90rem; font-weight:600;
   letter-spacing:.22em; text-transform:uppercase;
-  color:rgba(255,255,255,.4); border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.65); border:1px solid rgba(255,255,255,.12);
   padding:.3rem 1.1rem; border-radius:100px; margin-bottom:2rem;
   animation:fadeUp .7s .1s ease both;
 }
@@ -64,12 +64,12 @@
 }
 @keyframes gradShift { 0%{background-position:0% 50%} 100%{background-position:300% 50%} }
 .gls-hero__sub {
-  font-size:1rem; color:rgba(255,255,255,.38);
+  font-size:1rem; color:rgba(255,255,255,.65);
   letter-spacing:.06em; margin-bottom:3rem;
   animation:fadeUp .7s .45s ease both;
 }
 .gls-hero__scroll { display:flex; flex-direction:column; align-items:center; gap:.55rem; animation:fadeUp .7s .6s ease both; }
-.gls-hero__scroll span:first-child { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.28); }
+.gls-hero__scroll span:first-child { font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.7); }
 .gls-hero__chevrons { display:flex; flex-direction:column; align-items:center; gap:2px; }
 .gls-hero__chevrons span { display:block; width:10px; height:10px; border-right:1.5px solid rgba(255,255,255,.35); border-bottom:1.5px solid rgba(255,255,255,.35); transform:rotate(45deg); animation:chev .9s ease-in-out infinite; }
 .gls-hero__chevrons span:nth-child(2){animation-delay:.15s;opacity:.7}
@@ -230,8 +230,8 @@
 ══════════════════════════════════════════════ */
 .gls-tl { max-width:1320px; margin:0 auto; padding:6rem 2rem 4rem; }
 .gls-tl__intro { text-align:center; margin-bottom:4.5rem; }
-.gls-tl__intro-label { font-size:.72rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--txt2); margin-bottom:.5rem; }
-.gls-tl__intro-title { font-family:var(--ff-sans); font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:700; color:var(--txt); }
+.gls-tl__intro-label { font-size: 1rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--color-secondary-400); margin-bottom:.5rem; }
+.gls-tl__intro-title { font-family:var(--ff-sans); font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:700; color:var(--color-secondary-400); }
 .gls-tl__body { position:relative; }
 
 /* Línea vertical — se pinta con gradiente de colores PV */

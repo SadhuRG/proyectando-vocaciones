@@ -15,31 +15,103 @@ function Lightbox({ images, startIndex, accentColor, onClose }) {
   const [idx, setIdx] = useState(startIndex);
   const n = images.length;
   const touchX = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const prev = useCallback(() => setIdx(i => (i - 1 + n) % n), [n]);
-  const next = useCallback(() => setIdx(i => (i + 1) % n),     [n]);
+  const next = useCallback(() => setIdx(i => (i + 1) % n), [n]);
 
-  // Lock scroll
+  const handleDownload = useCallback(async (e) => {
+    e.stopPropagation();
+
+    try {
+      const imageUrl = images[idx];
+      const response = await fetch(imageUrl, { mode: 'cors' });
+      const blob = await response.blob();
+
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const extension = blob.type.split('/')[1] || 'jpg';
+
+      link.href = blobUrl;
+      link.download = `galeria-${idx + 1}.${extension}`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error('Error al descargar la imagen:', error);
+
+      const link = document.createElement('a');
+      link.href = images[idx];
+      link.download = `galeria-${idx + 1}`;
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+  }, [images, idx]);
+
   useEffect(() => {
-    const el   = document.documentElement;
-    const ovfl = el.style.overflow;
-    const pr   = el.style.paddingRight;
-    const bar  = window.innerWidth - el.clientWidth;
-    el.style.overflow     = 'hidden';
-    el.style.paddingRight = bar + 'px';
-    return () => { el.style.overflow = ovfl; el.style.paddingRight = pr; };
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  // Keyboard
+  useEffect(() => {
+    const el = document.documentElement;
+    const ovfl = el.style.overflow;
+    const pr = el.style.paddingRight;
+    const bar = window.innerWidth - el.clientWidth;
+
+    el.style.overflow = 'hidden';
+    el.style.paddingRight = bar + 'px';
+
+    return () => {
+      el.style.overflow = ovfl;
+      el.style.paddingRight = pr;
+    };
+  }, []);
+
   useEffect(() => {
     const fn = e => {
-      if (e.key === 'Escape')     onClose();
-      if (e.key === 'ArrowLeft')  prev();
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') prev();
       if (e.key === 'ArrowRight') next();
     };
+
     window.addEventListener('keydown', fn);
     return () => window.removeEventListener('keydown', fn);
   }, [onClose, prev, next]);
+
+  const actionBtnStyle = {
+    height: isMobile ? '2.6rem' : '2.9rem',
+    borderRadius: '999px',
+    border: '1px solid rgba(255,255,255,.18)',
+    background: 'rgba(20,20,20,.78)',
+    backdropFilter: 'blur(10px)',
+    color: '#fff',
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: isMobile ? '.4rem' : '.55rem',
+    padding: isMobile ? '0 .85rem' : '0 1rem',
+    fontSize: isMobile ? '.82rem' : '.92rem',
+    fontWeight: 600,
+    letterSpacing: '.01em',
+    transition: 'all .2s ease',
+    boxShadow: '0 10px 30px rgba(0,0,0,.25)',
+  };
+
+  const iconWrapStyle = {
+    width: '1.15rem',
+    height: '1.15rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  };
 
   const modal = (
     <div
@@ -52,77 +124,191 @@ function Lightbox({ images, startIndex, accentColor, onClose }) {
         touchX.current = null;
       }}
       style={{
-        position: 'fixed', inset: 0, zIndex: 999999,
+        position: 'fixed',
+        inset: 0,
+        zIndex: 999999,
         background: 'rgba(0,0,0,0.93)',
         backdropFilter: 'blur(16px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '4rem 5rem 3rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: isMobile ? '5.2rem 1rem 1.5rem' : '4rem 5rem 3rem',
         boxSizing: 'border-box',
         animation: 'lbFade .15s ease',
       }}
     >
-      {/* X cerrar */}
-      <button onClick={onClose} aria-label="Cerrar" style={{
-        position: 'fixed', top: '1rem', right: '1.2rem', zIndex: 1000000,
-        width: '2.6rem', height: '2.6rem', borderRadius: '50%',
-        border: '1.5px solid rgba(255,255,255,.25)',
-        background: 'rgba(20,20,20,.85)',
-        color: '#fff', fontSize: '1.1rem', cursor: 'pointer',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        lineHeight: 1, padding: 0,
-      }}>✕</button>
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          position: 'fixed',
+          top: isMobile ? '.75rem' : '1rem',
+          right: isMobile ? '.75rem' : '1.2rem',
+          left: isMobile ? '.75rem' : 'auto',
+          zIndex: 1000000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: isMobile ? 'space-between' : 'flex-end',
+          gap: '.75rem',
+          flexWrap: 'wrap',
+        }}
+      >
+        <button
+          onClick={handleDownload}
+          aria-label="Descargar imagen"
+          title="Descargar imagen"
+          style={{
+            ...actionBtnStyle,
+            background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`,
+            color: '#111',
+            border: 'none',
+          }}
+        >
+          <span style={iconWrapStyle}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+              <path
+                d="M12 4v10m0 0 4-4m-4 4-4-4M5 19h14"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span>{isMobile ? 'Descargar' : 'Descargar'}</span>
+        </button>
 
-      {/* Flecha ‹ */}
-      {n > 1 && <button onClick={e => { e.stopPropagation(); prev(); }} aria-label="Anterior" style={{
-        position: 'fixed', left: '.8rem', top: '50%',
-        transform: 'translateY(-50%)', zIndex: 1000000,
-        width: '3rem', height: '3rem', borderRadius: '50%',
-        border: '1.5px solid rgba(255,255,255,.2)',
-        background: 'rgba(20,20,20,.75)', backdropFilter: 'blur(8px)',
-        color: '#fff', fontSize: '2rem', lineHeight: 1, cursor: 'pointer',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0,
-      }}>‹</button>}
+        <button
+          onClick={onClose}
+          aria-label="Cerrar visor"
+          title="Cerrar visor"
+          style={actionBtnStyle}
+        >
+          <span style={iconWrapStyle}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+              <path
+                d="M6 6l12 12M18 6 6 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
+          <span>{isMobile ? 'Cerrar' : 'Cerrar'}</span>
+        </button>
+      </div>
 
-      {/* Imagen */}
-      <div onClick={e => e.stopPropagation()} style={{
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-        gap: '.7rem', maxWidth: '100%', maxHeight: '100%',
-        animation: 'lbZoom .22s cubic-bezier(.34,1.4,.64,1)',
-      }}>
+      {n > 1 && (
+        <button
+          onClick={e => { e.stopPropagation(); prev(); }}
+          aria-label="Anterior"
+          title="Imagen anterior"
+          style={{
+            position: 'fixed',
+            left: isMobile ? '.5rem' : '.8rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 1000000,
+            width: isMobile ? '2.6rem' : '3rem',
+            height: isMobile ? '2.6rem' : '3rem',
+            borderRadius: '50%',
+            border: '1.5px solid rgba(255,255,255,.2)',
+            background: 'rgba(20,20,20,.75)',
+            backdropFilter: 'blur(8px)',
+            color: '#fff',
+            fontSize: isMobile ? '1.7rem' : '2rem',
+            lineHeight: 1,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 0,
+          }}
+        >
+          ‹
+        </button>
+      )}
+
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '.9rem',
+          maxWidth: '100%',
+          maxHeight: '100%',
+          width: isMobile ? '100%' : 'auto',
+          animation: 'lbZoom .22s cubic-bezier(.34,1.4,.64,1)',
+        }}
+      >
         <img
           key={idx}
           src={images[idx]}
           alt={`Foto ${idx + 1} de ${n}`}
           style={{
             display: 'block',
-            maxWidth: '100%',
-            maxHeight: 'calc(100vh - 8rem)',
-            width: 'auto', height: 'auto',
+            maxWidth: isMobile ? '100%' : '100%',
+            maxHeight: isMobile ? 'calc(100vh - 11rem)' : 'calc(100vh - 8rem)',
+            width: 'auto',
+            height: 'auto',
             objectFit: 'contain',
-            borderRadius: '10px',
+            borderRadius: isMobile ? '8px' : '10px',
             boxShadow: '0 24px 80px rgba(0,0,0,.7)',
           }}
         />
-        <div style={{
-          fontSize: '.78rem', fontFamily: 'sans-serif',
-          background: 'rgba(0,0,0,.35)', padding: '.25rem .9rem',
-          borderRadius: '100px', letterSpacing: '.1em',
-        }}>
-          <span style={{ color: accentColor, fontWeight: 700 }}>{idx + 1}</span>
-          <span style={{ color: 'rgba(255,255,255,.35)' }}> / {n}</span>
+
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '.55rem',
+            fontSize: isMobile ? '.76rem' : '.82rem',
+            fontFamily: 'sans-serif',
+            background: 'rgba(0,0,0,.35)',
+            padding: isMobile ? '.42rem .85rem' : '.45rem .95rem',
+            borderRadius: '999px',
+            letterSpacing: '.04em',
+            color: '#fff',
+          }}
+        >
+          <span style={{ color: accentColor, fontWeight: 700 }}>
+            {idx + 1}
+          </span>
+          <span style={{ color: 'rgba(255,255,255,.35)' }}>/</span>
+          <span style={{ color: 'rgba(255,255,255,.72)' }}>{n}</span>
         </div>
       </div>
 
-      {/* Flecha › */}
-      {n > 1 && <button onClick={e => { e.stopPropagation(); next(); }} aria-label="Siguiente" style={{
-        position: 'fixed', right: '.8rem', top: '50%',
-        transform: 'translateY(-50%)', zIndex: 1000000,
-        width: '3rem', height: '3rem', borderRadius: '50%',
-        border: '1.5px solid rgba(255,255,255,.2)',
-        background: 'rgba(20,20,20,.75)', backdropFilter: 'blur(8px)',
-        color: '#fff', fontSize: '2rem', lineHeight: 1, cursor: 'pointer',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0,
-      }}>›</button>}
+      {n > 1 && (
+        <button
+          onClick={e => { e.stopPropagation(); next(); }}
+          aria-label="Siguiente"
+          title="Imagen siguiente"
+          style={{
+            position: 'fixed',
+            right: isMobile ? '.5rem' : '.8rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 1000000,
+            width: isMobile ? '2.6rem' : '3rem',
+            height: isMobile ? '2.6rem' : '3rem',
+            borderRadius: '50%',
+            border: '1.5px solid rgba(255,255,255,.2)',
+            background: 'rgba(20,20,20,.75)',
+            backdropFilter: 'blur(8px)',
+            color: '#fff',
+            fontSize: isMobile ? '1.7rem' : '2rem',
+            lineHeight: 1,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 0,
+          }}
+        >
+          ›
+        </button>
+      )}
     </div>
   );
 

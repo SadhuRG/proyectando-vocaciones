@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, GraduationCap } from 'lucide-react';
 import '../css/ediciones.css';
@@ -13,6 +13,24 @@ const EdicionesHistoria = () => {
     const [selectedEdition, setSelectedEdition] = useState(editionsData[editionsData.length - 1]);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [showCarrerasModal, setShowCarrerasModal] = useState(false);
+    // bloquear el modal al scrollear
+    useEffect(() => {
+        if (!showCarrerasModal) return;
+
+        const html = document.documentElement;
+        const body = document.body;
+
+        const prevHtmlOverflow = html.style.overflow;
+        const prevBodyOverflow = body.style.overflow;
+
+        html.style.overflow = 'hidden';
+        body.style.overflow = 'hidden';
+
+        return () => {
+            html.style.overflow = prevHtmlOverflow;
+            body.style.overflow = prevBodyOverflow;
+        };
+        }, [showCarrerasModal]);
 
     const nextImage = () => {
         setCurrentImageIndex((prev) =>
@@ -362,7 +380,10 @@ const EdicionesHistoria = () => {
                             </div>
 
                             {/* Body scrolleable */}
-                            <div className="carreras-modal-body">
+                            <div
+                                className="carreras-modal-body"
+                                onWheel={(e) => e.stopPropagation()}
+                                >
                                 <div className="carreras-modal-grid">
                                     {(selectedEdition.carreras || []).map((carrera, idx) => (
                                         <motion.div

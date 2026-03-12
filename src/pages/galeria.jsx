@@ -376,17 +376,16 @@ export default function Galeria() {
         <PolaroidsHero />
         {/* Overlay para asegurar legibilidad del texto central */}
         <div className="gls-hero__overlay" />
-        <div className="gls-hero__body">
-          <span className="gls-hero__eyebrow">Universidad Nacional de Trujillo · SEDIPRO</span>
+          <div className="gls-hero__body">
+            <span className="gls-hero__eyebrow">Universidad Nacional de Trujillo · SEDIPRO</span>
 
-          <h1 className="gls-hero__title">
-            <span className="gls-hero__title-top">Galería</span>
-            <span className="gls-hero__title-main">Proyectando<br/>Vocaciones</span>
-          </h1>
-          <p className="gls-hero__sub">Tres ediciones · Cientos de momentos · Un propósito</p>
-          <div className="gls-hero__scroll">
-            <span>Explora las ediciones</span>
-            <div className="gls-hero__chevrons"><span/><span/><span/></div>
+            <h1 className="gls-hero__title">
+              <span className="gls-hero__title-main">Proyectando<br/>Vocaciones</span>
+            </h1>
+            <p className="gls-hero__sub">Tres ediciones · Cientos de momentos · Un propósito</p>
+            <div className="gls-hero__scroll">
+              <span>Explora las ediciones</span>
+              <div className="gls-hero__chevrons"><span/><span/><span/></div>
           </div>
         </div>
       </header>
@@ -394,7 +393,7 @@ export default function Galeria() {
       <section className="gls-tl">
         <div className="gls-tl__intro">
           <p className="gls-tl__intro-label">Línea de tiempo</p>
-          <h2 className="gls-tl__intro-title">Selecciona una edición</h2>
+          <h2 className="gls-tl__intro-title">Explora alguna edición</h2>
         </div>
         <div className="gls-tl__body">
           <div className="gls-tl__spine" />
