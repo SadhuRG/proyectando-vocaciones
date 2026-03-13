@@ -2,6 +2,16 @@ import { organizadoresDataPV1 } from './organizadoresDataPV1';
 import { organizadoresDataPV2 } from './organizadoresDataPV2';
 import { organizadoresDataPV3 } from './organizadoresDataPV3';
 
+// Imágenes destacadas PV 3.0 tomadas de la galería (recorrido, feria y charlas)
+import pv3Recorrido1 from '../assets/galeria/PV_3.0/recorrido_puerta-1/IMG_20260228_091458192_HDR.webp';
+import pv3Recorrido2 from '../assets/galeria/PV_3.0/recorrido_puerta-2/DSC01856.webp';
+import pv3Feria1     from '../assets/galeria/PV_3.0/feria-area-a/20260228_094534.webp';
+import pv3Feria2     from '../assets/galeria/PV_3.0/feria-area-a/20260228_092917.webp';
+import pv3Feria3     from '../assets/galeria/PV_3.0/feria-area-cd/IMG_20260228_101110988 (1).webp';
+import pv3Charla1    from '../assets/galeria/PV_3.0/carreras/carrera-medicina/IMG_20260228_142433.webp';
+import pv3Charla2    from '../assets/galeria/PV_3.0/carreras/carrera-ing-industrial/IMG_20260228_112010.webp';
+import pv3Charla3    from '../assets/galeria/PV_3.0/carreras/carrera-comunicacion/DSC02678.webp';
+
 export const editionsData = [
     {
         id: 1,
@@ -287,15 +297,17 @@ export const editionsData = [
             {logo:"ediciones/3/zootecnia.png", nombre:"Ingeniería Zootecnia"}
             
         ],
+        // Carrusel lateral de la página de ediciones:
+        // ahora usa 8 fotos reales de la galería PV 3.0
         imagenes: [
-            "/ediciones/3/img-6.jpg",
-            "/ediciones/3/img-2.jpg",
-            "/ediciones/3/img-1.jpg",
-            "/ediciones/3/img-3.jpg",
-            "/ediciones/3/img-4.jpg",
-            "/ediciones/3/img-5.jpg",
-            "/ediciones/3/img-7.jpg",
-            "/ediciones/3/img-8.jpg",
+            pv3Recorrido1,
+            pv3Recorrido2,
+            pv3Feria1,
+            pv3Feria2,
+            pv3Feria3,
+            pv3Charla1,
+            pv3Charla2,
+            pv3Charla3,
         ],
         isActive: true,
         organizadores: organizadoresDataPV3
