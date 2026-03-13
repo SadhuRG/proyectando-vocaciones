@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ScrollArrow from '../components/scroll_arrow';
 import { scrollToSection } from '../lib/utils';
 import '../css/welcome-home/home.css';
-import { FaInfoCircle, FaUsers, FaBullseye, FaGraduationCap, FaRocket, FaEye } from 'react-icons/fa';
+import {
+  FaInfoCircle, FaUsers, FaBullseye,
+  FaGraduationCap, FaRocket, FaEye,
+  FaLayerGroup, FaImages
+} from 'react-icons/fa';
 
-// Fotos de fondo — una por cada edición (PV 1.0, 2.0, 3.0)
 import heroBg1 from '../assets/galeria/PV_1.0/Anotación 2026-03-09 182602.webp';
 import heroBg2 from '../assets/galeria/PV_2.0/Fotos_grupales/WhatsApp Image 2025-02-24 at 3.31.28 PM.webp';
 import heroBg3 from '../assets/galeria/PV_3.0/feria-area-a/20260228_094918.webp';
@@ -13,6 +17,7 @@ const HERO_BG_IMAGES = [heroBg1, heroBg2, heroBg3];
 const CAROUSEL_INTERVAL = 5000;
 
 const Home = () => {
+  const navigate = useNavigate();
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
@@ -25,9 +30,10 @@ const Home = () => {
   return (
     <main className="home-main">
 
-      {/* ========== SECCIÓN 1: HERO / HOME ========== */}
+      {/* ══════════════ SECCIÓN 1 — HERO ══════════════ */}
       <section id="home" className="section section-hero">
-        {/* Carrusel de fondo — 3 fotos de las ediciones, opacas, sin flechas */}
+
+        {/* Carrusel de fondo */}
         <div className="hero-bg-carousel" aria-hidden="true">
           {HERO_BG_IMAGES.map((src, i) => (
             <div
@@ -38,25 +44,43 @@ const Home = () => {
           ))}
         </div>
         <div className="hero-overlay" aria-hidden="true" />
+
         <div className="section-content hero-content">
           <p className="hero-tag">SEDIPRO UNT presenta</p>
+
           <h1 className="hero-title">
-            Proyectando <span className="highlight">Vocaciones</span>
+            Proyectando{' '}
+            <span className="highlight highlight--gradient">Vocaciones</span>
           </h1>
+
           <p className="hero-subtitle">¡Un paso firme hacia tu futuro profesional!</p>
-          <div className="hero-buttons">
-            <button onClick={() => scrollToSection('quienes-somos')} className="btn btn-primary">
-              Descubre más
+
+          {/* CTAs */}
+          <div className="hero-ctas">
+            <button
+              className="hero-cta-card hero-cta-card--primary"
+              onClick={() => navigate('/ediciones')}
+            >
+              <span className="hero-cta-icon"><FaLayerGroup /></span>
+              <span className="hero-cta-label">Ediciones</span>
+              <span className="hero-cta-desc">Explora cada edición del evento</span>
             </button>
-            <button onClick={() => scrollToSection('evento')} className="btn btn-outline">
-              Sobre el Evento
+
+            <button
+              className="hero-cta-card hero-cta-card--outline"
+              onClick={() => navigate('/galeria')}
+            >
+              <span className="hero-cta-icon"><FaImages /></span>
+              <span className="hero-cta-label">Galería</span>
+              <span className="hero-cta-desc">Revive los mejores momentos</span>
             </button>
           </div>
         </div>
+
         <ScrollArrow onClick={() => scrollToSection('quienes-somos')} />
       </section>
 
-      {/* ========== SECCIÓN 2: QUIÉNES SOMOS ========== */}
+      {/* ══════════════ SECCIÓN 2 — QUIÉNES SOMOS ══════════════ */}
       <section id="quienes-somos" className="section section-quienes">
         <div className="section-content">
           <div className="qs-header">
@@ -66,7 +90,6 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Misión & Visión */}
           <div className="qs-mv-grid">
             <div className="mv-card">
               <div className="mv-card-top">
@@ -92,12 +115,11 @@ const Home = () => {
               </p>
             </div>
           </div>
-
         </div>
         <ScrollArrow onClick={() => scrollToSection('objetivos')} />
       </section>
 
-      {/* ========== SECCIÓN 3: OBJETIVOS ========== */}
+      {/* ══════════════ SECCIÓN 3 — OBJETIVOS ══════════════ */}
       <section id="objetivos" className="section section-objetivos">
         <div className="section-content">
           <div className="obj-header">
@@ -106,9 +128,7 @@ const Home = () => {
           <div className="objetivos-grid">
             <div className="objetivo-card">
               <span className="obj-number">01</span>
-              <div className="objetivo-icon-wrap">
-                <FaInfoCircle className="objetivo-icon" />
-              </div>
+              <div className="objetivo-icon-wrap"><FaInfoCircle className="objetivo-icon" /></div>
               <div className="objetivo-body">
                 <h3>Informar</h3>
                 <p>Ofrecer datos precisos y actuales sobre las carreras y oportunidades laborales del mercado.</p>
@@ -116,9 +136,7 @@ const Home = () => {
             </div>
             <div className="objetivo-card">
               <span className="obj-number">02</span>
-              <div className="objetivo-icon-wrap">
-                <FaUsers className="objetivo-icon" />
-              </div>
+              <div className="objetivo-icon-wrap"><FaUsers className="objetivo-icon" /></div>
               <div className="objetivo-body">
                 <h3>Conectar</h3>
                 <p>Propiciar intercambios significativos entre estudiantes y referentes de cada sector.</p>
@@ -126,9 +144,7 @@ const Home = () => {
             </div>
             <div className="objetivo-card">
               <span className="obj-number">03</span>
-              <div className="objetivo-icon-wrap">
-                <FaBullseye className="objetivo-icon" />
-              </div>
+              <div className="objetivo-icon-wrap"><FaBullseye className="objetivo-icon" /></div>
               <div className="objetivo-body">
                 <h3>Motivar</h3>
                 <p>Alentar a los estudiantes a elegir carreras que los realicen tanto a nivel personal como profesional.</p>
@@ -136,9 +152,7 @@ const Home = () => {
             </div>
             <div className="objetivo-card">
               <span className="obj-number">04</span>
-              <div className="objetivo-icon-wrap">
-                <FaGraduationCap className="objetivo-icon" />
-              </div>
+              <div className="objetivo-icon-wrap"><FaGraduationCap className="objetivo-icon" /></div>
               <div className="objetivo-body">
                 <h3>Orientar</h3>
                 <p>Acompañar la elección universitaria de los estudiantes, alineando intereses y aptitudes con su proyección profesional.</p>
@@ -149,16 +163,12 @@ const Home = () => {
         <ScrollArrow onClick={() => scrollToSection('evento')} />
       </section>
 
-      {/* ========== SECCIÓN 4: SOBRE EL EVENTO ========== */}
+      {/* ══════════════ SECCIÓN 4 — SOBRE EL EVENTO ══════════════ */}
       <section id="evento" className="section section-evento">
-        {/* Formas decorativas de fondo */}
-        <div className="evento-blob evento-blob--1" aria-hidden="true" />
-        <div className="evento-blob evento-blob--2" aria-hidden="true" />
 
         <div className="section-content">
           <h2 className="section-title section-title--evento">Sobre el Evento</h2>
 
-          {/* Stats en fila superior */}
           <div className="evento-stats-row">
             <div className="stat-card stat-card--accent">
               <span className="stat-card-number">1500+</span>
@@ -170,7 +180,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Texto descriptivo inferior */}
           <div className="evento-desc">
             <p>
               <strong>Proyectando Vocaciones</strong> es un proyecto de <strong>SEDIPRO UNT</strong> que orienta a estudiantes preuniversitarios de colegios y academias de <strong>La Libertad</strong> para que tomen una decisión informada sobre su futura carrera en la <strong>Universidad Nacional de Trujillo</strong>.
@@ -180,48 +189,66 @@ const Home = () => {
         <ScrollArrow onClick={() => scrollToSection('publico')} />
       </section>
 
-      {/* ========== SECCIÓN 5: PÚBLICO OBJETIVO ========== */}
+      {/* ══════════════ SECCIÓN 5 — PÚBLICO OBJETIVO ══════════════ */}
       <section id="publico" className="section section-publico">
+        <div className="publico-blob publico-blob--1" aria-hidden="true" />
+        <div className="publico-blob publico-blob--2" aria-hidden="true" />
         <div className="section-content">
           <h2 className="section-title section-title--publico">Público Objetivo</h2>
           <p className="publico-intro">
-            Un proyecto hecho para estudiantes que están definiendo su futuro profesional.
+            Proyectando Vocaciones está diseñado para acompañar a jóvenes en el momento más
+            decisivo de su vida académica: elegir su carrera profesional.
           </p>
           <div className="publico-grid">
+
+            {/* Card 1 */}
             <div className="publico-card">
+              <span className="publico-num-bg">01</span>
               <div className="publico-card-top">
                 <div className="publico-card-icon-wrap">
                   <FaGraduationCap className="publico-icon" />
                 </div>
-                <span className="publico-num">01</span>
+                <span className="publico-badge">Secundaria</span>
               </div>
               <h3>Estudiantes de secundaria</h3>
               <p>
-                Especialmente aquellos de <strong>4.° y 5.° grado</strong> de colegios públicos y privados, que necesitan explorar y contrastar sus opciones antes de salir del colegio.
+                Jóvenes de 4.° y 5.° de secundaria de colegios públicos y privados
+                que aún no tienen clara su vocación y buscan un espacio para explorar opciones reales
+                antes de salir del colegio.
               </p>
+              <div className="publico-divider" />
               <ul className="publico-list">
-                <li>Colegios públicos y privados</li>
-                <li>4° y 5° de secundaria</li>
-                <li>Explora opciones de carrera</li>
+                <li>Colegios públicos y privados de Trujillo</li>
+                <li>4.° y 5.° grado de secundaria</li>
+                <li>Sin dirección vocacional definida</li>
+                <li>Buscan orientación y experiencias reales</li>
               </ul>
             </div>
-            <div className="publico-card publico-card--dark">
+
+            {/* Card 2 */}
+            <div className="publico-card">
+              <span className="publico-num-bg">02</span>
               <div className="publico-card-top">
-                <div className="publico-card-icon-wrap publico-card-icon-wrap--inv">
+                <div className="publico-card-icon-wrap">
                   <FaBullseye className="publico-icon" />
                 </div>
-                <span className="publico-num publico-num--inv">02</span>
+                <span className="publico-badge">Preuniversitario</span>
               </div>
               <h3>Estudiantes preuniversitarios</h3>
               <p>
-                Jóvenes en academias e institutos que buscan afianzar o confirmar su elección de carrera con más información y autoconocimiento antes de su examen de admisión.
+                Jóvenes en academias e institutos preuniversitarios que buscan confirmar o
+                replantear su elección de carrera antes de rendir el examen de admisión a
+                la Universidad Nacional de Trujillo.
               </p>
+              <div className="publico-divider" />
               <ul className="publico-list">
                 <li>Academias e institutos preuniversitarios</li>
-                <li>En proceso de admisión UNT</li>
-                <li>Confirmar y reforzar su vocación</li>
+                <li>En proceso de admisión a la UNT</li>
+                <li>Con elección de carrera aún en duda</li>
+                <li>Necesitan autoconocimiento y referentes</li>
               </ul>
             </div>
+
           </div>
         </div>
       </section>
