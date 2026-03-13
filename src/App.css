@@ -400,7 +400,7 @@
 .footer-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 1.75rem;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -412,27 +412,74 @@
   margin: 0;
 }
 
-.btn-back-top {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.95rem;
-  border-radius: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 0.75rem;
-  font-weight: 500;
+/* ── Botón flotante "Volver arriba" con variantes según el fondo ── */
+.back-to-top-float {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-inter);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease, border-color 0.2s ease;
+  animation: backToTopFadeIn 0.3s ease;
 }
 
-.btn-back-top:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
+/* Fondo blanco → botón MORADO para que se vea */
+.back-to-top-float.back-to-top-float--on-light {
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(
+    145deg,
+    var(--color-accent-500) 0%,
+    var(--color-accent-400) 50%,
+    var(--color-secondary-400) 100%
+  );
+  color: #ffffff;
+  box-shadow:
+    0 4px 20px rgba(108, 45, 145, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.back-to-top-float.back-to-top-float--on-light:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 28px rgba(108, 45, 145, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Fondo morado → botón BLANCO/claro para que se vea */
+.back-to-top-float.back-to-top-float--on-dark {
+  border: 1px solid var(--color-neutral-200);
+  background: var(--color-neutral-0);
+  color: var(--color-secondary-400);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.back-to-top-float.back-to-top-float--on-dark:hover {
+  background: var(--color-primary-50);
+  border-color: var(--color-primary-200);
+  color: var(--color-primary-400);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes backToTopFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================

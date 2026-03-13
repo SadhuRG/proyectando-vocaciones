@@ -1,4 +1,4 @@
-import { FaArrowUp, FaFacebook, FaLinkedinIn, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaLinkedinIn, FaYoutube, FaInstagram } from 'react-icons/fa';
 import { FaTiktok } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import { scrollToSection } from '../lib/utils';
@@ -97,13 +97,6 @@ const Footer = () => {
           <p className="footer-copy">
             © {new Date().getFullYear()} SEDIPRO UNT · Universidad Nacional de Trujillo
           </p>
-          <button
-            className="btn-back-top"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <FaArrowUp size={11} />
-            <span>Volver arriba</span>
-          </button>
         </div>
 
       </div>

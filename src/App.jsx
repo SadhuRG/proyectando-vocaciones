@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Header        from './components/header';
 import Footer        from './components/footer';
 import ScrollToTop   from './components/ScrollToTop';
+import BackToTop     from './components/BackToTop';
 import Home          from './pages/home';
 import Carreras      from './pages/carrerras';
 import Galeria       from './pages/galeria';
@@ -44,6 +45,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
+      <BackToTop />
     </Router>
   );
 }

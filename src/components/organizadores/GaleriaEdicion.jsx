@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 // keen-slider removido — carrusel propio en JS puro
 import { EDICIONES } from '../../pages/galeria';
-import PhotoCarousel from './PhotoCarousel';
+import PhotoCarousel, { Lightbox } from './PhotoCarousel';
 
 const globToUrls = (g) => Object.values(g).map(m => m.default);
 
@@ -237,7 +237,12 @@ function CollageMosaico({ fotos, edicion }) {
         </div>
       </div>
       {lbStart!==null&&(
-        <Lightbox images={fotos} startIndex={lbStart} onClose={handleClose} anchorRef={wrapRef}/>
+        <Lightbox
+          images={fotos}
+          startIndex={lbStart}
+          onClose={handleClose}
+          accentColor={edicion.colorAccent}
+        />
       )}
     </>
   );

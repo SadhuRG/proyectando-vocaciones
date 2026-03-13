@@ -9,9 +9,9 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
 // ─────────────────────────────────────────────────────────────────
-// LIGHTBOX
+// LIGHTBOX (exportado para uso en PV1 / CollageMosaico)
 // ─────────────────────────────────────────────────────────────────
-function Lightbox({ images, startIndex, accentColor, onClose }) {
+export function Lightbox({ images, startIndex, accentColor, onClose }) {
   const [idx, setIdx] = useState(startIndex);
   const n = images.length;
   const touchX = useRef(null);
